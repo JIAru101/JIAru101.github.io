@@ -5,119 +5,122 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>林佳茹 — 电商视觉设计师</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --ink: #1a1814; --ink-2: #6b6760; --ink-3: #b0ada8;
-    --paper: #f7f5f0; --paper-2: #eeeae3; --accent: #c8a96e;
-    --serif: 'DM Serif Display', Georgia, serif;
-    --sans: 'DM Sans', sans-serif;
+    --ink: #111827;       /* 深邃黑，用于主标题 */
+    --ink-2: #4B5563;     /* 高级灰，用于正文 */
+    --ink-3: #9CA3AF;     /* 浅灰，用于次要信息 */
+    --bg: #F9FAFB;        /* 页面底色 */
+    --surface: #FFFFFF;   /* 卡片底色 */
+    --accent: #2563EB;    /* 商业蓝，与你的AIGC详情页相呼应 */
+    --accent-hover: #1D4ED8;
+    --sans: 'Inter', system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   }
   html { scroll-behavior: smooth; }
-  body { font-family: var(--sans); background: var(--paper); color: var(--ink); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; background: rgba(247,245,240,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,24,20,0.08); }
-  .nav-logo { font-family: var(--serif); font-size: 1.4rem; color: var(--ink); text-decoration: none; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 3rem; background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+  .nav-logo { font-size: 1.2rem; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: 0.05em; }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-2); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--ink); }
+  .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--ink-2); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
 
-  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 8rem 3rem 4rem; gap: 4rem; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; right: -10%; top: 15%; width: 55%; height: 75%; background: var(--paper-2); border-radius: 3px; z-index: 0; transform: rotate(2deg); }
-  .hero-text { position: relative; z-index: 1; }
-  .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
-  .hero-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--accent); }
-  .hero h1 { font-family: var(--serif); font-size: clamp(3rem, 5vw, 5rem); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 2rem; }
-  .hero h1 em { font-style: italic; color: var(--ink-2); }
-  .hero-sub { font-size: 1rem; color: var(--ink-2); max-width: 420px; line-height: 1.8; margin-bottom: 2.5rem; font-weight: 300; }
-  .hero-cta { display: inline-flex; align-items: center; gap: 0.75rem; padding: 0.85rem 2rem; background: var(--ink); color: var(--paper); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; transition: background 0.2s, gap 0.2s; }
-  .hero-cta:hover { background: var(--accent); gap: 1.2rem; }
-  .hero-visual { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 1rem; align-items: flex-end; }
-  .hero-card { background: white; border: 1px solid rgba(26,24,20,0.1); border-radius: 4px; padding: 1.5rem; width: 85%; animation: float 6s ease-in-out infinite; }
-  .hero-card:nth-child(2) { width: 70%; animation-delay: -2s; }
-  .hero-card:nth-child(3) { width: 80%; animation-delay: -4s; }
-  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-  .card-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.5rem; }
-  .card-title { font-family: var(--serif); font-size: 1.1rem; }
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 6rem 3rem 2rem; gap: 4rem; max-width: 1200px; margin: 0 auto; }
+  .hero-eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; text-transform: uppercase; }
+  .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 2px; background: var(--accent); }
+  .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+  .hero h1 span { color: var(--accent); }
+  .hero-sub { font-size: 1.1rem; color: var(--ink-2); max-width: 460px; line-height: 1.8; margin-bottom: 2.5rem; font-weight: 300; }
+  .hero-cta { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2.5rem; background: var(--accent); color: white; text-decoration: none; font-size: 0.95rem; font-weight: 500; border-radius: 8px; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25); transition: all 0.3s; }
+  .hero-cta:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); }
+  
+  .hero-visual { position: relative; display: flex; flex-direction: column; gap: 1rem; align-items: flex-end; }
+  .hero-card { background: var(--surface); border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 10px 30px rgba(0,0,0,0.03); border-radius: 12px; padding: 1.5rem; width: 85%; animation: float 6s ease-in-out infinite; }
+  .hero-card:nth-child(2) { width: 75%; animation-delay: -2s; }
+  .hero-card:nth-child(3) { width: 90%; animation-delay: -4s; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .card-label { font-size: 0.75rem; font-weight: 600; color: var(--ink-3); margin-bottom: 0.5rem; text-transform: uppercase; }
+  .card-title { font-size: 1.1rem; font-weight: 600; color: var(--ink); }
   .card-tags { display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap; }
-  .card-tag { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; background: var(--paper-2); border-radius: 2px; color: var(--ink-2); }
+  .card-tag { font-size: 0.7rem; font-weight: 500; padding: 4px 10px; background: var(--bg); border: 1px solid rgba(0,0,0,0.05); border-radius: 6px; color: var(--ink-2); }
 
-  section { padding: 7rem 3rem; max-width: 1100px; margin: 0 auto; }
-  .section-num { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
-  .section-num::after { content: ''; flex: 1; height: 1px; background: var(--paper-2); max-width: 3rem; }
-  .section-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.1; margin-bottom: 3rem; }
-  hr.sep { border: none; border-top: 1px solid rgba(26,24,20,0.1); max-width: 1100px; margin: 0 auto; }
-
-  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
-  .about-body { font-weight: 300; font-size: 1.05rem; color: var(--ink-2); line-height: 1.9; }
-  .about-body p { margin-bottom: 1.2rem; }
-  .about-body strong { color: var(--ink); font-weight: 500; }
-  .skills { display: flex; flex-direction: column; }
-  .skill { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--paper-2); gap: 1rem; }
-  .skill-name { font-size: 0.85rem; color: var(--ink); }
-  .skill-right { display: flex; align-items: center; gap: 1rem; }
-  .skill-dots { display: flex; gap: 4px; }
-  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--paper-2); }
+  section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
+  .section-num { font-size: 0.85rem; font-weight: 600; color: var(--accent); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; text-transform: uppercase; }
+  .section-title { font-size: clamp(2rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.2; margin-bottom: 3rem; color: var(--ink); }
+  
+  /* 关于我 & 经历 通用排版 */
+  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: start; }
+  .about-body p { margin-bottom: 1.2rem; font-size: 1.05rem; color: var(--ink-2); font-weight: 300; }
+  .about-body strong { color: var(--ink); font-weight: 600; }
+  
+  .skills { display: flex; flex-direction: column; gap: 1rem; }
+  .skill { display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--surface); border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+  .skill-name { font-size: 0.95rem; font-weight: 500; color: var(--ink); }
+  .skill-progress { display: flex; gap: 6px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #E5E7EB; }
   .dot.on { background: var(--accent); }
-  .skill-label { font-size: 0.7rem; color: var(--ink-3); min-width: 30px; text-align: right; }
 
-  .exp-list { display: flex; flex-direction: column; }
-  .exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid var(--paper-2); }
-  .exp-date { font-size: 0.75rem; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.4rem; }
-  .exp-company { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.25rem; }
-  .exp-role { font-size: 0.8rem; color: var(--ink-3); }
-  .exp-points { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-  .exp-points li { font-size: 0.88rem; font-weight: 300; color: var(--ink-2); line-height: 1.7; padding-left: 1rem; position: relative; }
-  .exp-points li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-size: 0.8rem; }
+  .exp-item { display: grid; grid-template-columns: 220px 1fr; gap: 2rem; padding: 2.5rem; background: var(--surface); border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.02); transition: transform 0.3s; }
+  .exp-item:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.05); }
+  .exp-date { font-size: 0.85rem; font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; }
+  .exp-company { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.25rem; }
+  .exp-role { font-size: 0.9rem; color: var(--ink-3); }
+  .exp-points { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .exp-points li { font-size: 0.95rem; font-weight: 300; color: var(--ink-2); padding-left: 1.2rem; position: relative; }
+  .exp-points li::before { content: '•'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
 
-  .works-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-  .work-item { background: white; border: 1px solid rgba(26,24,20,0.08); border-radius: 4px; overflow: hidden; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; text-decoration: none; color: inherit; display: block; }
-  .work-item:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(26,24,20,0.1); }
-  .work-thumb { height: 200px; display: flex; align-items: center; justify-content: center; }
-  .work-thumb svg { opacity: 0.2; transition: opacity 0.3s; }
-  .work-item:hover .work-thumb svg { opacity: 0.4; }
-  .work-body { padding: 1.5rem; }
-  .work-num { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
-  .work-title { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.4rem; }
-  .work-desc { font-size: 0.82rem; color: var(--ink-2); font-weight: 300; line-height: 1.6; }
-  .work-foot { padding: 1rem 1.5rem; border-top: 1px solid var(--paper-2); display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .wtag { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; background: var(--paper); border-radius: 2px; color: var(--ink-2); }
+  /* 核心作品集区域重构 */
+  .works-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
+  .work-item { background: var(--surface); border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.3s ease; text-decoration: none; color: inherit; display: flex; flex-direction: column; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.04); }
+  .work-item:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+  
+  .work-thumb { height: 260px; width: 100%; overflow: hidden; background: #f0f0f0; }
+  .work-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+  .work-item:hover .work-thumb img { transform: scale(1.05); }
+  
+  .work-body { padding: 1.5rem; flex: 1; }
+  .work-num { font-size: 0.75rem; font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; }
+  .work-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--ink); }
+  .work-desc { font-size: 0.9rem; color: var(--ink-2); font-weight: 300; line-height: 1.6; }
+  .work-foot { padding: 1rem 1.5rem; border-top: 1px solid rgba(0,0,0,0.04); display: flex; gap: 0.5rem; flex-wrap: wrap; background: #FAFAFA; }
+  .wtag { font-size: 0.7rem; font-weight: 500; padding: 4px 10px; background: white; border: 1px solid #E5E7EB; border-radius: 4px; color: var(--ink-2); }
 
-  .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
-  .contact-intro { font-size: 1.05rem; font-weight: 300; color: var(--ink-2); line-height: 1.9; margin-bottom: 2rem; }
-  .contact-items { display: flex; flex-direction: column; gap: 1rem; }
-  .contact-item { display: flex; align-items: center; gap: 1rem; font-size: 0.9rem; color: var(--ink-2); font-weight: 300; }
-  .ci-icon { width: 2rem; height: 2rem; border: 1px solid var(--paper-2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--accent); flex-shrink: 0; font-weight: 500; }
-  .form { display: flex; flex-direction: column; gap: 1rem; }
-  .form label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); display: block; margin-bottom: 0.35rem; }
-  .form input, .form textarea { width: 100%; padding: 0.85rem 1rem; border: 1px solid rgba(26,24,20,0.12); border-radius: 3px; background: white; font-family: var(--sans); font-size: 0.9rem; color: var(--ink); font-weight: 300; outline: none; transition: border-color 0.2s; }
-  .form input:focus, .form textarea:focus { border-color: var(--accent); }
-  .form textarea { height: 120px; resize: none; }
-  .form-btn { align-self: flex-start; padding: 0.85rem 2rem; background: var(--ink); color: var(--paper); border: none; border-radius: 3px; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+  /* 联系表单重构 */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; background: var(--surface); padding: 4rem; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.03); }
+  .contact-intro { font-size: 1.2rem; font-weight: 400; color: var(--ink); line-height: 1.6; margin-bottom: 2rem; }
+  .contact-items { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-item { display: flex; align-items: center; gap: 1rem; font-size: 0.95rem; color: var(--ink-2); }
+  .ci-icon { width: 2.5rem; height: 2.5rem; background: rgba(37,99,235,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--accent); font-weight: 600; }
+  
+  .form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form label { font-size: 0.8rem; font-weight: 500; color: var(--ink-2); display: block; margin-bottom: 0.4rem; }
+  .form input, .form textarea { width: 100%; padding: 1rem; border: 1px solid #E5E7EB; border-radius: 8px; background: #F9FAFB; font-family: var(--sans); font-size: 0.95rem; color: var(--ink); outline: none; transition: all 0.2s; }
+  .form input:focus, .form textarea:focus { border-color: var(--accent); background: white; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+  .form textarea { height: 140px; resize: vertical; }
+  .form-btn { align-self: flex-start; padding: 1rem 2.5rem; background: var(--ink); color: white; border: none; border-radius: 8px; font-weight: 500; font-size: 0.95rem; cursor: pointer; transition: background 0.2s; }
   .form-btn:hover { background: var(--accent); }
 
-  footer { text-align: center; padding: 2.5rem; border-top: 1px solid rgba(26,24,20,0.08); font-size: 0.75rem; color: var(--ink-3); letter-spacing: 0.08em; }
-  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  footer { text-align: center; padding: 3rem; font-size: 0.85rem; color: var(--ink-3); }
+  .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
   .fade-in.visible { opacity: 1; transform: none; }
 
-  @media (max-width: 768px) {
-    nav { padding: 1.2rem 1.5rem; }
-    .nav-links { gap: 1rem; }
-    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
-    .hero::before { display: none; }
+  @media (max-width: 900px) {
+    .hero, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hero { padding: 8rem 2rem 3rem; text-align: center; }
     .hero-visual { display: none; }
-    section { padding: 4rem 1.5rem; }
-    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .works-grid { grid-template-columns: 1fr; }
-    .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
+    .hero-eyebrow { justify-content: center; }
+    .hero-sub { margin: 0 auto 2.5rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 1rem; padding: 1.5rem; }
+    .contact-grid { padding: 2rem; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="nav-logo" href="#">林佳茹.</a>
+  <a class="nav-logo" href="#">LIN JIARU.</a>
   <ul class="nav-links">
     <li><a href="#about">关于</a></li>
     <li><a href="#experience">经历</a></li>
@@ -128,82 +131,58 @@
 
 <div class="hero">
   <div class="hero-text fade-in">
-    <div class="hero-eyebrow">电商视觉设计师</div>
-    <h1>让每一张图<br>都<em>开口说话</em></h1>
-    <p class="hero-sub">专注电商视觉设计，熟练运用 PS、AI、C4D 等工具，擅长主图、详情页及店铺整体视觉规划。</p>
-    <a class="hero-cta" href="#works">查看作品 →</a>
+    <div class="hero-eyebrow">Visual Designer</div>
+    <h1>让每一张图<br>都<span>开口说话</span></h1>
+    <p class="hero-sub">专注商业电商视觉设计，精通 PS、AI、C4D 等工具，擅长结合 AIGC 技术打造高转化率的主图、详情页及店铺整体视觉。</p>
+    <a class="hero-cta" href="#works">查看作品展示</a>
   </div>
   <div class="hero-visual fade-in">
     <div class="hero-card">
-      <div class="card-label">现任职位</div>
-      <div class="card-title">汕头千汇贸易 · 美工</div>
+      <div class="card-label">CURRENT ROLE</div>
+      <div class="card-title">汕头千汇贸易 · 视觉设计</div>
       <div class="card-tags"><span class="card-tag">主图</span><span class="card-tag">详情页</span><span class="card-tag">AIGC</span></div>
     </div>
     <div class="hero-card">
-      <div class="card-label">擅长工具</div>
+      <div class="card-label">CORE SKILLS</div>
       <div class="card-title">PS · AI · C4D · Blender</div>
-      <div class="card-tags"><span class="card-tag">设计</span><span class="card-tag">修图</span><span class="card-tag">3D</span></div>
-    </div>
-    <div class="hero-card">
-      <div class="card-label">兴趣爱好</div>
-      <div class="card-title">音乐 · 画画 · 摄影 · 羽毛球</div>
-      <div class="card-tags"><span class="card-tag">创意</span><span class="card-tag">生活</span></div>
+      <div class="card-tags"><span class="card-tag">精修</span><span class="card-tag">3D建模</span><span class="card-tag">摄影</span></div>
     </div>
   </div>
 </div>
 
-<hr class="sep">
-
 <section id="about">
-  <div class="section-num">01 · About</div>
+  <div class="section-num">01 · About Me</div>
   <div class="section-title">关于我</div>
   <div class="about-grid fade-in">
     <div class="about-body">
-      <p>你好，我是 <strong>林佳茹</strong>，一名专注电商视觉的设计师。毕业于汕头职业技术学院数字媒体应用技术专业，现居汕头龙湖区。</p>
-      <p>拥有多年电商美工经验，服务过淘宝、天猫、阿里巴巴、亚马逊等平台。熟练掌握 <strong>PS、AI、CDR、Blender、C4D</strong> 等工具，能独立完成从产品拍摄到页面上线的完整视觉输出。</p>
-      <p>工作认真负责，善于灵活运用 <strong>AIGC</strong> 技术提升设计效率，热爱设计，乐于尝试新事物。</p>
+      <p>你好，我是 <strong>林佳茹</strong>，一名专注商业视觉转化率的电商设计师。毕业于汕头职业技术学院数字媒体应用技术专业，现居汕头龙湖区。</p>
+      <p>拥有多年电商视觉打磨经验，服务过淘宝、天猫、阿里巴巴、亚马逊等国内外主流电商平台。不仅精通 <strong>PS、AI、C4D、Blender</strong> 等核心设计工具，更具备从“产品实拍 → 后期精修 → 页面视觉策划 → 上线排版”的全链路输出能力。</p>
+      <p>面对行业变革，我善于将 <strong>AIGC 技术</strong> 深度融入商业工作流，突破实拍素材局限，大幅提升画面表现力与工作效率，为品牌创造更具溢价感的视觉体验。</p>
     </div>
     <div class="skills">
       <div class="skill">
-        <span class="skill-name">Photoshop</span>
-        <div class="skill-right">
-          <div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
-          <span class="skill-label">精通</span>
-        </div>
+        <span class="skill-name">Photoshop / 商业精修</span>
+        <div class="skill-progress"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
       </div>
       <div class="skill">
-        <span class="skill-name">Illustrator / CDR</span>
-        <div class="skill-right">
-          <div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
-          <span class="skill-label">熟练</span>
-        </div>
+        <span class="skill-name">产品摄影 / 场景打光</span>
+        <div class="skill-progress"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
       </div>
       <div class="skill">
-        <span class="skill-name">C4D / Blender</span>
-        <div class="skill-right">
-          <div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
-          <span class="skill-label">熟练</span>
-        </div>
+        <span class="skill-name">AIGC 辅助设计 (Midjourney/Stable Diffusion)</span>
+        <div class="skill-progress"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
       </div>
       <div class="skill">
-        <span class="skill-name">产品拍摄 / 修图</span>
-        <div class="skill-right">
-          <div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
-          <span class="skill-label">精通</span>
-        </div>
+        <span class="skill-name">C4D / Blender 3D渲染</span>
+        <div class="skill-progress"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
       </div>
       <div class="skill">
-        <span class="skill-name">AIGC 辅助设计</span>
-        <div class="skill-right">
-          <div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
-          <span class="skill-label">熟练</span>
-        </div>
+        <span class="skill-name">Illustrator / CDR 矢量排版</span>
+        <div class="skill-progress"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
       </div>
     </div>
   </div>
 </section>
-
-<hr class="sep">
 
 <section id="experience">
   <div class="section-num">02 · Experience</div>
@@ -213,121 +192,169 @@
       <div>
         <div class="exp-date">2025.02 — 至今</div>
         <div class="exp-company">汕头千汇贸易有限公司</div>
-        <div class="exp-role">美工</div>
+        <div class="exp-role">视觉设计师 / 美工</div>
       </div>
       <ul class="exp-points">
-        <li>负责淘宝、天猫、阿里巴巴等平台整体视觉设计，涵盖主图、详情页、SKU 图等核心内容创意与落地。</li>
-        <li>独立完成产品拍摄、图片修饰及详情页设计，拥有从拍摄到成片的完整视觉输出能力。</li>
-        <li>灵活运用 AIGC 进行设计辅助，提升视觉画面表现力与工作效率。</li>
-        <li>独立负责多个店铺视觉设计与更新维护，确保品牌调性统一、画面风格一致。</li>
+        <li>主导淘宝、天猫、1688等核心渠道的视觉设计，深度参与主图创意、详情页逻辑梳理及SKU表现。</li>
+        <li>独立操刀从产品拍摄到精修合成的完整视觉链路，把控品牌最终视觉输出质量。</li>
+        <li><strong>技术创新：</strong> 规模化引入 AIGC 技术辅助场景合成与背景拓展，使画面表现力与产出效率提升30%以上。</li>
+        <li>负责多店铺的日常视觉迭代，确保品牌调性统一及各类大促活动页面的按时高质量交付。</li>
       </ul>
     </div>
     <div class="exp-item">
       <div>
         <div class="exp-date">2022.11 — 2024.12</div>
         <div class="exp-company">博易实业（深圳）有限公司</div>
-        <div class="exp-role">美工</div>
+        <div class="exp-role">品牌视觉美工</div>
       </div>
       <ul class="exp-points">
-        <li>主导公司市场部门物料设计，包括展会、海报等宣传品。</li>
-        <li>设计并优化商业合作 PPT 模板，助力签约率提升。</li>
-        <li>负责部分产品拍摄与图片处理，改进视觉效果。</li>
-        <li>协助市场数据收集与分析，核销市场推广费用。</li>
+        <li>负责B端市场部核心宣传物料的视觉重构，包括展会视觉、品牌海报及宣传册。</li>
+        <li>深度优化商业合作 PPT 等演示文稿，通过视觉逻辑梳理，助力商务团队签约率提升。</li>
+        <li>参与产品外拍与室内棚拍，并负责后期影像处理。</li>
       </ul>
     </div>
     <div class="exp-item">
       <div>
         <div class="exp-date">2022.03 — 2022.09</div>
         <div class="exp-company">深圳矩焦有限公司</div>
-        <div class="exp-role">跨境美工</div>
+        <div class="exp-role">跨境电商美工</div>
       </div>
       <ul class="exp-points">
-        <li>负责亚马逊平台产品广告投放图设计，提升点击率和转化率。</li>
-        <li>制作売壳替换图，优化站内图片，根据运营需求持续改进，促进销售增长。</li>
-        <li>剪辑和制作产品视频素材，增强营销效果。</li>
+        <li>专攻亚马逊 (Amazon) 平台视觉，产出高点击率的广告投放图与A+页面。</li>
+        <li>负责爆款产品的壳替换图制作及站内图片精细化优化，直接赋能销售转化。</li>
+        <li>独立承担产品营销短视频的剪辑与特效包装，丰富多媒体营销矩阵。</li>
       </ul>
     </div>
   </div>
 </section>
 
-<hr class="sep">
-
 <section id="works">
-  <div class="section-num">03 · Works</div>
-  <div class="section-title">作品展示</div>
+  <div class="section-num">03 · Portfolio</div>
+  <div class="section-title">精选作品</div>
   <div class="works-grid fade-in">
-    <a class="work-item" href="#">
-      <div class="work-thumb" style="background:#eeeae3;">
-        <svg width="80" height="80" viewBox="0 0 80 80"><rect x="10" y="15" width="60" height="50" rx="3" stroke="#1a1814" stroke-width="2" fill="none"/><rect x="20" y="25" width="40" height="6" rx="2" fill="#1a1814"/><rect x="20" y="38" width="25" height="4" rx="2" fill="#1a1814"/></svg>
+    
+    <a class="work-item" href="纸巾作品集22 拷贝.jpg" target="_blank">
+      <div class="work-thumb">
+        <img src="纸巾作品集22 拷贝.jpg" alt="AIGC纸巾详情页设计">
       </div>
       <div class="work-body">
         <div class="work-num">01</div>
-        <div class="work-title">电商详情页设计</div>
-        <div class="work-desc">淘宝/天猫产品详情页视觉方案，从卖点提炼到画面落地。</div>
+        <div class="work-title">商务抽纸 - AIGC 详情页</div>
+        <div class="work-desc">运用 AIGC 打破低质量实拍限制，构建清新自然的商业空间，提升产品溢价感与品牌信任感。</div>
       </div>
-      <div class="work-foot"><span class="wtag">详情页</span><span class="wtag">排版</span><span class="wtag">PS</span></div>
+      <div class="work-foot"><span class="wtag">AIGC</span><span class="wtag">详情页全案</span><span class="wtag">场景构建</span></div>
     </a>
-    <a class="work-item" href="#">
-      <div class="work-thumb" style="background:#e8eef5;">
-        <svg width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="40" r="28" stroke="#1a1814" stroke-width="2" fill="none"/><circle cx="40" cy="40" r="14" stroke="#1a1814" stroke-width="1.5" fill="none"/><circle cx="40" cy="40" r="4" fill="#1a1814"/></svg>
+
+    <a class="work-item" href="除胶剂作品集22 拷贝.jpg" target="_blank">
+      <div class="work-thumb">
+        <img src="除胶剂作品集22 拷贝.jpg" alt="AIGC强力除胶剂详情页">
       </div>
       <div class="work-body">
         <div class="work-num">02</div>
-        <div class="work-title">产品主图设计</div>
-        <div class="work-desc">多平台产品主图视觉优化，提升点击率与转化率。</div>
+        <div class="work-title">强力除胶剂 - AIGC 详情页</div>
+        <div class="work-desc">利用AI光影渲染重构3D质感，以“痛点-信任”逻辑转化视觉闭环，产出高标准的电商长图。</div>
       </div>
-      <div class="work-foot"><span class="wtag">主图</span><span class="wtag">电商</span><span class="wtag">亚马逊</span></div>
+      <div class="work-foot"><span class="wtag">AIGC</span><span class="wtag">光影重塑</span><span class="wtag">转化逻辑</span></div>
     </a>
-    <a class="work-item" href="#">
-      <div class="work-thumb" style="background:#f0ede8;">
-        <svg width="80" height="80" viewBox="0 0 80 80"><rect x="12" y="20" width="56" height="40" rx="3" stroke="#1a1814" stroke-width="2" fill="none"/><line x1="12" y1="32" x2="68" y2="32" stroke="#1a1814" stroke-width="1.5"/><circle cx="22" cy="26" r="3" fill="#1a1814"/></svg>
+
+    <a class="work-item" href="未标题-3.jpg" target="_blank">
+      <div class="work-thumb">
+        <img src="未标题-3.jpg" alt="84消毒液主图">
       </div>
       <div class="work-body">
         <div class="work-num">03</div>
-        <div class="work-title">展会 & 海报物料</div>
-        <div class="work-desc">线下展会宣传物料及品牌海报设计，注重视觉冲击与信息传达。</div>
+        <div class="work-title">84消毒液 - 场景主图</div>
+        <div class="work-desc">居家健康场景营造，通过温馨的家庭背景与清晰的卖点排版，提升点击转化。</div>
       </div>
-      <div class="work-foot"><span class="wtag">海报</span><span class="wtag">展会</span><span class="wtag">印刷</span></div>
+      <div class="work-foot"><span class="wtag">主图设计</span><span class="wtag">场景合成</span></div>
     </a>
-    <a class="work-item" href="#">
-      <div class="work-thumb" style="background:#eef0e8;">
-        <svg width="80" height="80" viewBox="0 0 80 80"><polygon points="32,22 62,40 32,58" stroke="#1a1814" stroke-width="2" fill="none"/><circle cx="40" cy="40" r="30" stroke="#1a1814" stroke-width="1.5" fill="none"/></svg>
+
+    <a class="work-item" href="酸性清洁剂 拷贝 2.jpg" target="_blank">
+      <div class="work-thumb">
+        <img src="酸性清洁剂 拷贝 2.jpg" alt="酸性清洁剂主图">
       </div>
       <div class="work-body">
         <div class="work-num">04</div>
-        <div class="work-title">产品视频剪辑</div>
-        <div class="work-desc">电商平台产品宣传视频素材剪辑与制作，增强营销转化效果。</div>
+        <div class="work-title">酸性清洁剂 - 视觉主图</div>
+        <div class="work-desc">高对比度排版与动感的水流/气泡元素结合，突出产品“强力去污、专业级别”的核心卖点。</div>
       </div>
-      <div class="work-foot"><span class="wtag">视频</span><span class="wtag">剪辑</span><span class="wtag">营销</span></div>
+      <div class="work-foot"><span class="wtag">主图设计</span><span class="wtag">版式排版</span></div>
     </a>
+
+    <a class="work-item" href="详情1 拷贝.jpg" target="_blank">
+      <div class="work-thumb">
+        <img src="详情1 拷贝.jpg" alt="柠檬家私蜡主图">
+      </div>
+      <div class="work-body">
+        <div class="work-num">05</div>
+        <div class="work-title">柠檬家私蜡 - 质感主图</div>
+        <div class="work-desc">采用高级皮质家居场景背书，暖色调光影烘托，精准传递产品“滋养润化、重焕光泽”的调性。</div>
+      </div>
+      <div class="work-foot"><span class="wtag">主图设计</span><span class="wtag">高级质感</span></div>
+    </a>
+
+    <a class="work-item" href="空气清新剂 拷贝 2.jpg" target="_blank">
+      <div class="work-thumb">
+        <img src="空气清新剂 拷贝 2.jpg" alt="空气清新剂主图">
+      </div>
+      <div class="work-body">
+        <div class="work-num">06</div>
+        <div class="work-title">空气清新剂 - 清新主图</div>
+        <div class="work-desc">蓝天白云与自然植物元素的结合，视觉直观传达“植物萃取、自然清新”的产品特性。</div>
+      </div>
+      <div class="work-foot"><span class="wtag">主图设计</span><span class="wtag">场景融合</span></div>
+    </a>
+
+    <a class="work-item" href="ok 拷贝 2.jpg" target="_blank">
+      <div class="work-thumb">
+        <img src="ok 拷贝 2.jpg" alt="静电吸尘埃剂主图">
+      </div>
+      <div class="work-body">
+        <div class="work-num">07</div>
+        <div class="work-title">静电吸尘埃剂 - 商务主图</div>
+        <div class="work-desc">结合现代办公空间背景，突出商用及家用场景下的“锁尘、高效”功能。</div>
+      </div>
+      <div class="work-foot"><span class="wtag">主图设计</span><span class="wtag">空间透视</span></div>
+    </a>
+
+    <a class="work-item" href="除胶剂 拷贝 2.jpg" target="_blank">
+      <div class="work-thumb">
+        <img src="除胶剂 拷贝 2.jpg" alt="除胶剂主图">
+      </div>
+      <div class="work-body">
+        <div class="work-num">08</div>
+        <div class="work-title">超宝除胶剂 - 场景主图</div>
+        <div class="work-desc">利用玻璃擦拭的对比视觉，直截了当地展示“强力无痕速净”的去胶效果。</div>
+      </div>
+      <div class="work-foot"><span class="wtag">主图设计</span><span class="wtag">对比视觉</span></div>
+    </a>
+
   </div>
 </section>
 
-<hr class="sep">
-
 <section id="contact">
   <div class="section-num">04 · Contact</div>
-  <div class="section-title">联系我</div>
+  <div class="section-title">联系合作</div>
   <div class="contact-grid fade-in">
     <div>
-      <p class="contact-intro">有设计合作或项目需求？<br>欢迎随时联系我。</p>
+      <p class="contact-intro">有电商设计需求或希望交流 AIGC 视觉经验？<br>欢迎随时与我联系。</p>
       <div class="contact-items">
         <div class="contact-item"><div class="ci-icon">Tel</div><span>18026715687</span></div>
         <div class="contact-item"><div class="ci-icon">W</div><span>微信：JiaRu-oo</span></div>
         <div class="contact-item"><div class="ci-icon">@</div><span>LinJiaRu_0110@163.com</span></div>
-        <div class="contact-item"><div class="ci-icon">地</div><span>汕头市龙湖区</span></div>
+        <div class="contact-item"><div class="ci-icon">📍</div><span>广东省 汕头市 龙湖区</span></div>
       </div>
     </div>
     <div class="form">
-      <div><label>姓名</label><input type="text" placeholder="你的名字"></div>
-      <div><label>邮箱</label><input type="email" placeholder="your@email.com"></div>
-      <div><label>留言</label><textarea placeholder="聊聊你的项目或需求..."></textarea></div>
-      <button class="form-btn">发送消息 →</button>
+      <div><label>如何称呼您</label><input type="text" placeholder="您的姓名或公司名称"></div>
+      <div><label>联系方式</label><input type="text" placeholder="手机号 / 微信 / 邮箱"></div>
+      <div><label>项目需求</label><textarea placeholder="简单描述一下您的设计需求..."></textarea></div>
+      <button class="form-btn">发送留言</button>
     </div>
   </div>
 </section>
 
-<footer>© 2026 林佳茹. 保留所有权利。</footer>
+<footer>© 2026 LIN JIARU. All Rights Reserved. <br>Design & Crafted with Code.</footer>
 
 <script>
 const obs = new IntersectionObserver(entries => {
