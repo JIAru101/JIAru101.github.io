@@ -8,7 +8,7 @@
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    var(--ink): #111827;       
+    --ink: #111827;       
     --ink-2: #4B5563;     
     --ink-muted: #9CA3AF; 
     --bg: #F9FAFB;        
@@ -65,7 +65,23 @@
   .exp-points li { font-size: 1rem; font-weight: 300; color: var(--ink-2); padding-left: 1.5rem; position: relative; line-height: 1.8; }
   .exp-points li::before { content: '→'; position: absolute; left: 0; color: var(--grad-2); font-weight: 700; }
 
-  /* 瀑布流核心布局 */
+  /* ========================================= */
+  /* 核心修改 1：AIGC 核心长图专属双列并排展示区 */
+  /* ========================================= */
+  .aigc-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 强制均分两列 */
+    gap: 2rem; 
+    margin-bottom: 2rem; 
+  }
+  .aigc-showcase .work-item {
+    margin-bottom: 0; 
+    height: 100%; 
+  }
+
+  /* ========================================= */
+  /* 瀑布流核心布局（用于其他作品） */
+  /* ========================================= */
   .works-container {
     width: 100%;
     margin: 0 auto;
@@ -73,6 +89,7 @@
     column-gap: 2rem; 
   }
 
+  /* 作品卡片通用样式 */
   .work-item { 
     display: inline-block; 
     width: 100%; 
@@ -139,6 +156,7 @@
   .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
   .fade-in.visible { opacity: 1; transform: none; }
 
+  /* 响应式适配：包含对双列AIGC在手机端的单列处理 */
   @media (max-width: 1100px) {
     .hero { grid-template-columns: 1fr; gap: 3rem; padding: 10rem 2rem 4rem; text-align: center; }
     .hero-visual { display: none; }
@@ -152,6 +170,7 @@
     section { padding: 5rem 2rem; }
     .exp-item { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem; }
     .works-container { column-count: 1; }
+    .aigc-showcase { grid-template-columns: 1fr; } /* 核心修改 2：手机端恢复单列 */
   }
 </style>
 </head>
@@ -242,7 +261,7 @@
   <div class="section-num">03</div>
   <div class="section-title">精选作品集</div>
   
-  <div class="works-container fade-in">
+  <div class="aigc-showcase fade-in">
     
     <a class="work-item" href="纸巾作品集22 拷贝.jpg" target="_blank">
       <div class="work-thumb"><img src="纸巾作品集22 拷贝.jpg" alt="AIGC纸巾详情页设计"></div>
@@ -264,6 +283,10 @@
       </div>
     </a>
 
+  </div>
+
+  <div class="works-container fade-in">
+    
     <a class="work-item" href="广告投放图1 拷贝.jpg" target="_blank">
       <div class="work-thumb"><img src="广告投放图1 拷贝.jpg" alt="多品牌跨境广告投放 Banner"></div>
       <div class="work-body">
