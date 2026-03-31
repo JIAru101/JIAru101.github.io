@@ -66,21 +66,18 @@
   .exp-points li::before { content: '→'; position: absolute; left: 0; color: var(--grad-2); font-weight: 700; }
 
   /* ========================================= */
-  /* 核心修改 1：AIGC 核心长图专属双列并排展示区 */
+  /* 【全新修改】 AIGC 核心长图专属 单列 展示区 */
   /* ========================================= */
   .aigc-showcase {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 强制均分两列 */
-    gap: 2rem; 
-    margin-bottom: 2rem; 
-  }
-  .aigc-showcase .work-item {
-    margin-bottom: 0; 
-    height: 100%; 
+    display: flex;
+    flex-direction: column; /* 让里面的卡片从上往下竖着排 */
+    gap: 4rem; /* 上下两张长图的距离 */
+    margin: 0 auto 4rem auto; /* 居中显示，并与下方的瀑布流保持距离 */
+    max-width: 900px; /* 重点：限制最大宽度，让长图保持真实的电商详情页比例，不会被拉得太宽 */
   }
 
   /* ========================================= */
-  /* 瀑布流核心布局（用于其他作品） */
+  /* 瀑布流核心布局（用于其他的正方形/横向图） */
   /* ========================================= */
   .works-container {
     width: 100%;
@@ -156,7 +153,6 @@
   .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
   .fade-in.visible { opacity: 1; transform: none; }
 
-  /* 响应式适配：包含对双列AIGC在手机端的单列处理 */
   @media (max-width: 1100px) {
     .hero { grid-template-columns: 1fr; gap: 3rem; padding: 10rem 2rem 4rem; text-align: center; }
     .hero-visual { display: none; }
@@ -170,7 +166,7 @@
     section { padding: 5rem 2rem; }
     .exp-item { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem; }
     .works-container { column-count: 1; }
-    .aigc-showcase { grid-template-columns: 1fr; } /* 核心修改 2：手机端恢复单列 */
+    .aigc-showcase { max-width: 100%; gap: 2rem; } /* 手机端取消最大宽度限制 */
   }
 </style>
 </head>
