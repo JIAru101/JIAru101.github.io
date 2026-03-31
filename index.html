@@ -64,4 +64,235 @@
   .section-title::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 50px; height: 4px; background: var(--accent-grad); border-radius: 2px; }
 
   /* 简历板：紧凑型设计 */
-  .resume-
+  .resume-board {
+    background: var(--surface);
+    border-radius: 24px;
+    padding: 4rem;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.02);
+    border: 1px solid rgba(0,0,0,0.03);
+  }
+
+  .board-section { margin-bottom: 3rem; }
+  .board-section:last-child { margin-bottom: 0; }
+
+  .board-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .board-title::before {
+    content: ''; display: block; width: 16px; height: 4px; background: var(--accent-grad); border-radius: 2px;
+  }
+
+  .about-text { font-size: 1rem; font-weight: 300; color: var(--ink-2); line-height: 1.8; }
+  .about-text p { margin-bottom: 0.8rem; }
+  .about-text strong { color: #111827; font-weight: 600; }
+
+  .board-divider {
+    height: 1px;
+    background: rgba(0,0,0,0.05);
+    margin: 3rem 0;
+    border: none;
+  }
+
+  .exp-list-new { display: flex; flex-direction: column; gap: 2.5rem; }
+  .exp-item-new { position: relative; padding-left: 1.8rem; }
+  .exp-item-new::before {
+    content: ''; position: absolute; left: 4px; top: 10px; bottom: -2.5rem; width: 1px; background: rgba(79, 70, 229, 0.15);
+  }
+  .exp-item-new:last-child::before { display: none; }
+  .exp-item-new::after {
+    content: ''; position: absolute; left: 0; top: 7px; width: 9px; height: 9px; background: var(--surface); border: 2px solid var(--grad-1); border-radius: 50%;
+  }
+
+  .exp-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem; flex-wrap: wrap; gap: 0.8rem; }
+  .exp-company-new { font-size: 1.15rem; font-weight: 700; color: #111827; }
+  .exp-date-new { font-size: 0.8rem; font-weight: 600; color: var(--grad-1); background: var(--tag-bg-grad); padding: 3px 12px; border-radius: 50px; }
+  .exp-role-new { font-size: 0.95rem; font-weight: 600; color: var(--grad-2); margin-bottom: 0.8rem; }
+  .exp-points-new { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .exp-points-new li { font-size: 0.95rem; font-weight: 300; color: var(--ink-2); line-height: 1.7; position: relative; padding-left: 1.2rem; }
+  .exp-points-new li::before { content: '·'; position: absolute; left: 0; top: -1px; font-size: 1.5rem; color: var(--ink-muted); }
+
+  /* 作品列表：缩减卡片间距 */
+  .works-single-column { display: flex; flex-direction: column; gap: 3rem; max-width: 100%; margin: 0 auto; }
+  .work-item { display: flex; flex-direction: column; width: 100%; background: var(--surface); border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.04); }
+  .work-thumb { width: 100%; height: auto; overflow: hidden; border-bottom: 1px solid rgba(0,0,0,0.03); background: #F3F4F6; }
+  .work-thumb img { width: 100%; height: auto; display: block; object-fit: contain; }
+  .work-body { padding: 1.5rem; }
+  .work-num-box { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem; }
+  .work-num { font-size: 0.75rem; font-weight: 700; color: white; background: var(--accent-grad); padding: 2px 8px; border-radius: 4px;}
+  .work-tag-main { font-size: 0.75rem; font-weight: 600; color: var(--grad-1); text-transform: uppercase;}
+  .work-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827; }
+  .work-desc { font-size: 0.9rem; color: var(--ink-2); font-weight: 300; line-height: 1.6; margin-bottom: 1rem;}
+  .work-foot { padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.03); display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .wtag { font-size: 0.7rem; font-weight: 500; padding: 4px 12px; background: #F3F4F6; border-radius: 50px; color: var(--ink-2); }
+
+  .contact-grid { 
+    display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start; 
+    background: #FFFFFF; padding: 4rem; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.03); 
+  }
+  .contact-intro { font-size: 1.1rem; font-weight: 300; color: var(--ink-2); line-height: 1.7; margin-bottom: 2rem; }
+  .contact-items { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-item { display: flex; align-items: center; gap: 1rem; font-size: 0.95rem; color: #111827; }
+  .ci-icon { width: 2.5rem; height: 2.5rem; background: var(--tag-bg-grad); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--grad-1); font-weight: 700; }
+  
+  .form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form input, .form textarea { width: 100%; padding: 1rem; border: 1px solid #E5E7EB; border-radius: 10px; background: #FAFAFB; font-family: var(--sans); outline: none; }
+  .form textarea { height: 120px; }
+  .form-btn { align-self: flex-start; padding: 0.9rem 2.5rem; background: var(--accent-grad); color: white; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; }
+
+  footer { text-align: center; padding: 3rem 2rem; font-size: 0.85rem; color: var(--ink-muted); border-top: 1px solid rgba(0,0,0,0.02); }
+  
+  .fade-in { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    section { padding: 3rem 1.5rem; }
+    .hero { padding: 6rem 1.5rem 2rem; grid-template-columns: 1fr; text-align: center; }
+    .hero-visual { display: none; }
+    .hero-sub { margin: 0 auto 2.5rem; }
+    .resume-board { padding: 2.5rem 1.5rem; }
+    .contact-grid { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">LIN JIARU.</a>
+  <ul class="nav-links">
+    <li><a href="#resume">简历</a></li>
+    <li><a href="#works">作品集</a></li>
+    <li><a href="#contact">联系</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Visual Designer / E-commerce Expert</div>
+    <h1>让每一张图<br>都<span>开口说话</span></h1>
+    <p class="hero-sub">专注高转化率电商视觉全案设计，精通 3C、家居、快消等多品类。擅长亚马逊 A+ 与 AIGC 工作流，打造极具溢价感的商业视觉。</p>
+    <a class="hero-cta" href="#works">Explore my Portfolio</a>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="card-label">CURRENT ROLE</div>
+      <div class="card-title">视觉设计操刀</div>
+      <div class="card-tags"><span class="card-tag">国内电商主图</span><span class="card-tag">亚马逊 A+</span><span class="card-tag">AIGC辅助设计</span></div>
+    </div>
+    <div class="hero-card">
+      <div class="card-label">CORE TOOLS</div>
+      <div class="card-title">C4D/Blender · PS/AI · MJ/SD</div>
+    </div>
+  </div>
+</div>
+
+<section id="resume">
+  <div class="resume-board">
+    <div class="board-section">
+      <div class="board-title">关于我</div>
+      <div class="about-text">
+        <p>你好，我是 <strong>林佳茹</strong>。我是一名追求“转化率”的视觉设计师 [cite: 77]。</p>
+        <p>拥有丰富的全品类设计经验，精通亚马逊跨境电商与国内天猫/淘宝视觉策划 [cite: 77]。</p>
+        <p>擅长利用 AIGC 技术深度重构设计流，产出具有高级感和溢价感的视觉方案 [cite: 77]。</p>
+      </div>
+    </div>
+
+    <hr class="board-divider">
+
+    <div class="board-section">
+      <div class="board-title">工作经历</div>
+      <div class="exp-list-new">
+        <div class="exp-item-new">
+          <div class="exp-header-row">
+            <div class="exp-company-new">汕头千汇贸易有限公司</div>
+            <div class="exp-date-new">2025.02 — 至今</div>
+          </div>
+          <div class="exp-role-new">电商视觉设计师</div>
+          <ul class="exp-points-new">
+            <li>负责多店铺核心视觉设计与优化，涵盖淘宝、天猫、阿里巴巴等平台 [cite: 78]。</li>
+            <li>独立完成产品拍摄、修饰及详情页设计，具备完整视觉输出能力 [cite: 78]。</li> 
+          </ul>
+        </div>
+        
+        <div class="exp-item-new">
+          <div class="exp-header-row">
+            <div class="exp-company-new">博易实业（深圳）有限公司</div>
+            <div class="exp-date-new">2022.11 — 2024.12</div>
+          </div>
+          <div class="exp-role-new">视觉美工</div>
+          <ul class="exp-points-new">
+            <li>主导市场物料与 PPT 模版设计，助力签约率提升 [cite: 79]。</li>
+          </ul>
+        </div>
+        
+        <div class="exp-item-new">
+          <div class="exp-header-row">
+            <div class="exp-company-new">深圳矩焦有限公司</div>
+            <div class="exp-date-new">2022.03 — 2022.09</div>
+          </div>
+          <div class="exp-role-new">跨境电商美工</div>
+          <ul class="exp-points-new">
+            <li>主要负责亚马逊产品广告投放图，提升点击率与转化率 [cite: 80]。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="works">
+  <div class="section-num">03</div>
+  <div class="section-title">精选作品集</div>
+  
+  <div class="works-single-column">
+    <a class="work-item" href="#">
+      <div class="work-thumb"><img src="纸巾作品集22 拷贝.jpg" alt="AIGC纸巾详情页"></div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">01</span><span class="work-tag-main">AIGC 详情页全案</span></div>
+        <div class="work-title">商务抽纸 - AIGC 视觉重塑</div>
+        <div class="work-desc">运用 AIGC 打破低质量实拍限制，构建清新自然的商业空间 [cite: 81]。</div>
+        <div class="work-foot"><span class="wtag">场景构建</span><span class="wtag">转化逻辑</span></div>
+      </div>
+    </a>
+
+    <a class="work-item" href="#">
+      <div class="work-thumb"><img src="除胶剂作品集22 拷贝.jpg" alt="强力除胶剂"></div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">02</span><span class="work-tag-main">3D & AI 融合全案</span></div>
+        <div class="work-title">强力除胶剂 - AI 光影重塑商业视觉</div>
+        <div class="work-desc">利用 AI 光影重塑 3D 质感，梳理“痛点-信任-转化”逻辑 [cite: 81, 82]。</div>
+        <div class="work-foot"><span class="wtag">光影重构</span><span class="wtag">AIGC合成</span></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-num">04</div>
+  <div class="section-title">联系合作</div>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-intro">寻求视觉全案设计合作？随时欢迎与我联系 [cite: 88]。</p>
+      <div class="contact-items">
+        <div class="contact-item"><div class="ci-icon">T</div><span>18026715687</span></div>
+        <div class="contact-item"><div class="ci-icon">W</div><span>微信：JiaRu-oo</span></div>
+        <div class="contact-item"><div class="ci-icon">@</div><span>LinJiaRu_0110@163.com</span></div>
+      </div>
+    </div>
+    <div class="form">
+      <input type="text" placeholder="您的姓名 / 公司名称">
+      <input type="text" placeholder="手机 / 微信 / 邮箱">
+      <textarea placeholder="简单描述一下您的设计需求..."></textarea>
+      <button class="form-btn">发送留言</button>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 LIN JIARU. Crafted with Code.</footer>
+
+</body>
+</html>
