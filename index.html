@@ -69,121 +69,137 @@
   .card-tags { display: flex; gap: 0.6rem; margin-top: 1rem; flex-wrap: wrap; }
   .card-tag { font-size: 0.75rem; font-weight: 500; padding: 6px 14px; background: var(--tag-bg-grad); border-radius: 50px; color: var(--grad-1); border: 1px solid rgba(79, 70, 229, 0.1); }
 
-  /* 将统一宽度收缩为 1060px，让页面整体更聚拢 */
   section { padding: 8rem 4rem; max-width: 1060px; margin: 0 auto; }
   
-  .section-num { font-size: 0.9rem; font-weight: 700; color: var(--grad-2); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; text-transform: uppercase; }
-  .section-title { font-size: clamp(2.5rem, 4vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: 4rem; color: #111827; position: relative; display: inline-block;}
-  .section-title::after { content: ''; position: absolute; left: 0; bottom: -10px; width: 60px; height: 4px; background: var(--accent-grad); border-radius: 2px; }
-  
-  #about {
+  /* ========================================================= */
+  /* 全新升级：双栏布局简历画板 (极其省垂直空间) */
+  /* ========================================================= */
+  .resume-board {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 5rem;
     background: var(--surface);
-    border-radius: 40px 40px 0 0; 
-    padding: 6rem 5rem 3rem 5rem;
-    margin-top: 2rem;
-    margin-bottom: 0; 
-    box-shadow: 0 10px 40px rgba(0,0,0,0.02);
-    position: relative;
-    z-index: 2;
+    border-radius: 30px;
+    padding: 5rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.03);
+    border: 1px solid rgba(0,0,0,0.04);
   }
-  
+
+  .board-col-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .board-col-title::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: var(--accent-grad);
+    border-radius: 2px;
+  }
+
+  /* 左侧：关于我 */
   .about-text {
-    font-size: 1.15rem; 
+    font-size: 1rem; 
     font-weight: 300; 
     color: var(--ink-2); 
     line-height: 1.9; 
-    max-width: 900px;
-    padding-left: 2.5rem;
-    position: relative;
   }
-  .about-text::before {
+  .about-text p { margin-bottom: 1.5rem; }
+  .about-text strong { color: #111827; font-weight: 600; }
+
+  /* 右侧：紧凑型时间轴工作经历 */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .timeline-item {
+    position: relative;
+    padding-left: 2rem;
+    border-left: 2px solid rgba(79, 70, 229, 0.1);
+  }
+  /* 时间轴发光圆点 */
+  .timeline-item::before {
     content: '';
+    position: absolute;
+    left: -7px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background: var(--grad-1);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+  }
+  
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.4rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .timeline-role {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+  }
+  
+  .timeline-date {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--grad-1);
+    background: var(--tag-bg-grad);
+    padding: 4px 12px;
+    border-radius: 50px;
+  }
+  
+  .timeline-company {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--grad-2);
+    margin-bottom: 1.2rem;
+  }
+  
+  .timeline-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .timeline-points li {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--ink-2);
+    line-height: 1.7;
+    position: relative;
+    padding-left: 1.2rem;
+  }
+  /* 极简的点缀符 */
+  .timeline-points li::before {
+    content: '·';
     position: absolute;
     left: 0;
-    top: 5px;
-    bottom: 5px;
-    width: 4px;
-    background: var(--accent-grad);
-    border-radius: 4px;
-  }
-
-  #experience {
-    background: var(--surface);
-    border-radius: 0 0 40px 40px;
-    padding: 3rem 5rem 6rem 5rem;
-    margin-top: 0; 
-    margin-bottom: 6rem;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.02);
-    position: relative;
-    z-index: 2;
-  }
-  
-  #experience::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 5rem;
-    right: 5rem;
-    height: 1px;
-    background: repeating-linear-gradient(to right, rgba(0,0,0,0.08) 0, rgba(0,0,0,0.08) 8px, transparent 8px, transparent 16px);
-  }
-  
-  #experience::after {
-    content: 'CAREER PATH ↓';
-    position: absolute;
-    top: 0;
-    left: 5rem;
-    transform: translateY(-50%);
-    background: var(--accent-grad);
-    color: white;
-    font-size: 0.75rem;
+    top: -2px;
+    font-size: 1.5rem;
     font-weight: 700;
-    padding: 6px 18px;
-    border-radius: 50px;
-    letter-spacing: 0.1em;
-    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
-    z-index: 10;
+    color: var(--ink-muted);
+    line-height: 1;
   }
+  /* ========================================================= */
 
-  .exp-list { display: flex; flex-direction: column; gap: 2.5rem; }
-  
-  .exp-item { 
-    display: grid; 
-    grid-template-columns: 260px 1fr; 
-    gap: 4rem; 
-    padding: 3.5rem; 
-    background: #FAFAFB; 
-    border-radius: 24px; 
-    border: 1px solid rgba(0,0,0,0.03); 
-    border-left: 6px solid var(--grad-1); 
-    position: relative; 
-  }
-  
-  .exp-date { 
-    display: inline-block;
-    font-size: 0.85rem; 
-    font-weight: 700; 
-    color: var(--grad-1); 
-    background: white; 
-    padding: 6px 16px;
-    border-radius: 50px;
-    margin-bottom: 1.5rem; 
-    letter-spacing: 0.05em;
-    border: 1px solid rgba(79, 70, 229, 0.15);
-  }
-  
-  .exp-company { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.6rem; color: #111827; letter-spacing: 0.02em; }
-  .exp-role { font-size: 1.05rem; color: var(--ink-2); font-weight: 500; display: flex; align-items: center; gap: 0.6rem; }
-  .exp-role::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--grad-2); border-radius: 2px; }
-  
-  .exp-points { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
-  .exp-points li { font-size: 1rem; font-weight: 300; color: var(--ink-2); padding-left: 2rem; position: relative; line-height: 1.8; }
-  .exp-points li::before { 
-    content: ''; position: absolute; left: 0; top: 0.6rem; width: 6px; height: 6px;
-    background: var(--accent-grad); border-radius: 50%; box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
-  }
+  .section-num { font-size: 0.9rem; font-weight: 700; color: var(--grad-2); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; text-transform: uppercase; }
+  .section-title { font-size: clamp(2.5rem, 4vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: 4rem; color: #111827; position: relative; display: inline-block;}
+  .section-title::after { content: ''; position: absolute; left: 0; bottom: -10px; width: 60px; height: 4px; background: var(--accent-grad); border-radius: 2px; }
 
-  /* 这里将宽度设置为 100%，让它完美贴合上面 1060px 的卡片宽度 */
   .works-single-column {
     display: flex;
     flex-direction: column;
@@ -246,21 +262,12 @@
     nav { padding: 1rem 2rem; }
     .contact-grid { grid-template-columns: 1fr; gap: 4rem; padding: 3rem; }
     
-    #about { padding: 5rem 3rem 2rem 3rem; }
-    #experience { padding: 2rem 3rem 5rem 3rem; }
-    #experience::before { left: 3rem; right: 3rem; }
-    #experience::after { left: 3rem; }
+    .resume-board { grid-template-columns: 1fr; gap: 4rem; padding: 4rem; }
   }
   @media (max-width: 768px) {
     section { padding: 5rem 2rem; }
-    .exp-item { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem; border-left: none; border-top: 4px solid var(--grad-1); }
     .works-single-column { max-width: 100%; gap: 2.5rem; } 
-    
-    #about { padding: 4rem 2rem 2rem 2rem; border-radius: 24px 24px 0 0; }
-    #experience { padding: 2rem 2rem 4rem 2rem; border-radius: 0 0 24px 24px; }
-    #experience::before { left: 2rem; right: 2rem; }
-    #experience::after { left: 2rem; }
-    .about-text { padding-left: 1.5rem; }
+    .resume-board { padding: 3rem 2rem; border-radius: 20px; }
   }
 </style>
 </head>
@@ -269,8 +276,8 @@
 <nav>
   <a class="nav-logo" href="#">LIN JIARU.</a>
   <ul class="nav-links">
-    <li><a href="#about">关于</a></li>
-    <li><a href="#experience">经历</a></li>
+    <li><a href="#resume">关于</a></li>
+    <li><a href="#resume">经历</a></li>
     <li><a href="#works">作品</a></li>
     <li><a href="#contact">联系</a></li>
   </ul>
@@ -297,61 +304,64 @@
   </div>
 </div>
 
-<section id="about">
-  <div class="section-num">01</div>
-  <div class="section-title">关于我</div>
-  <div class="fade-in about-text">
-    <p style="margin-bottom: 1.5rem;">你好，我是 <strong>林佳茹</strong>。我是一名不仅追求视觉“精美”，更追求电商“转化率”的视觉设计师。</p>
-    <p style="margin-bottom: 1.5rem;">拥有丰富的全品类设计经验，无论是<strong>亚马逊跨境电商的 3C 电子、家居清洁设备</strong>，还是<strong>国内天猫/淘宝的快消品</strong>，我都能准确提炼核心卖点。我不仅精通 PS、AI 等工具进行商业精修，更具备跨平台 A+ 页面排版、场景合成、以及多品牌广告 Banner 的视觉策划能力。</p>
-    <p>此外，我善于利用 AIGC 技术深度重构商业设计流，用更高效的方式产出具有高级感和溢价感的视觉方案。</p>
-  </div>
-</section>
+<section id="resume">
+  <div class="resume-board fade-in">
+    
+    <div class="board-col">
+      <div class="board-col-title">关于我</div>
+      <div class="about-text">
+        <p>你好，我是 <strong>林佳茹</strong>。我是一名不仅追求视觉“精美”，更追求电商“转化率”的视觉设计师。</p>
+        <p>拥有丰富的全品类设计经验，无论是<strong>亚马逊跨境电商的 3C 电子、家居清洁设备</strong>，还是<strong>国内天猫/淘宝的快消品</strong>，我都能准确提炼核心卖点。</p>
+        <p>我不仅精通 PS、AI 等工具进行商业精修，更具备跨平台 A+ 页面排版、场景合成、以及多品牌广告 Banner 的视觉策划能力。此外，我善于利用 AIGC 技术深度重构商业设计流，用更高效的方式产出具有高级感和溢价感的视觉方案。</p>
+      </div>
+    </div>
 
-<section id="experience">
-  <div class="section-num">02</div>
-  <div class="section-title">工作经历</div>
-  <div class="exp-list fade-in">
-    
-    <div class="exp-item">
-      <div>
-        <div class="exp-date">2025.02 — 至今</div>
-        <div class="exp-company">汕头千汇贸易有限公司</div>
-        <div class="exp-role">电商视觉设计师</div>
+    <div class="board-col">
+      <div class="board-col-title">工作经历</div>
+      <div class="timeline">
+        
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">电商视觉设计师</div>
+            <div class="timeline-date">2025.02 — 至今</div>
+          </div>
+          <div class="timeline-company">汕头千汇贸易有限公司</div>
+          <ul class="timeline-points">
+            <li>负责淘宝、天猫、阿里巴巴等多店铺整体视觉设计，能根据不同平台的视觉规范进行内容适配与风格延展，涵盖主图、详情页等创意落地。</li>
+            <li>独立完成产品拍摄、图片修饰及详情页设计，拥有从拍摄到成片的完整视觉输出能力。</li> 
+            <li>灵活运用 AIGC 进行设计辅助，提升视觉画面表现力与工作效率。</li> 
+          </ul>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">视觉美工</div>
+            <div class="timeline-date">2022.11 — 2024.12</div>
+          </div>
+          <div class="timeline-company">博易实业（深圳）有限公司</div>
+          <ul class="timeline-points">
+            <li>主导公司市场部门展会、海报等物料设计。优化商业合作 PPT 模版，助力签约率提升。</li>
+            <li>负责部分产品拍摄，处理各部门图片，改进视觉效果。</li>
+            <li>协助市场数据收集与分析，核销市场推广费用。</li>
+          </ul>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">跨境电商美工</div>
+            <div class="timeline-date">2022.03 — 2022.09</div>
+          </div>
+          <div class="timeline-company">深圳矩焦有限公司</div>
+          <ul class="timeline-points">
+            <li>主要负责亚马逊平台销售的产品广告投放图，提升产品点击率和转化率。</li>
+            <li>制作壳站替换图，优化站内图片，根据运营需求持续改进，促进销售额增长。</li>
+            <li>剪辑和制作各类目标产品视频素材，增强营销效果。</li>
+          </ul>
+        </div>
+
       </div>
-      <ul class="exp-points">
-        <li>负责多店铺核心视觉设计，淘宝、天猫、阿里巴巴等电商平台的整体视觉设计与优化，能根据不同平台的视觉规范进行内容适配与风格延展。涵盖主图、详情页、Sku图等核心视觉内容的创意与落地执行。</li>
-        <li>独立完成产品拍摄、图片修饰及详情页设计，拥有从拍摄到成片的完整视觉输出能力。</li> 
-        <li>灵活运用AI生成技术(AIGC)进行设计辅助，提升视觉画面表现力与工作效率。</li> 
-        <li>独立负责多个店铺的视觉设计与更新维护，确保品牌调性统一与画面风格一致。</li> 
-      </ul>
     </div>
-    
-    <div class="exp-item">
-      <div>
-        <div class="exp-date">2022.11 — 2024.12</div>
-        <div class="exp-company">博易实业（深圳）有限公司</div>
-        <div class="exp-role">视觉美工</div>
-      </div>
-      <ul class="exp-points">
-        <li>主导公司市场部门的物料设计(展会，海报)。设计并优化公司商业合作PPT模版，助力签约率的提升。</li>
-        <li>负责部分产品拍摄，处理各部门图片，改进视觉效果。</li>
-        <li>协助市场数据收集与分析，核销市场推广费用。</li>
-      </ul>
-    </div>
-    
-    <div class="exp-item">
-      <div>
-        <div class="exp-date">2022.03 — 2022.09</div>
-        <div class="exp-company">深圳矩焦有限公司</div>
-        <div class="exp-role">跨境电商美工</div>
-      </div>
-      <ul class="exp-points">
-        <li>主要负责公司亚马逊平台销售的产品广告投放图，提升产品点击率和转化率。</li>
-        <li>制作壳站替换图，优化站内图片，根据运营需求进行持续改进，促进销售额的增长。</li>
-        <li>剪辑和制作各类目标产品视频素材，增强营销效果。</li>
-      </ul>
-    </div>
-    
+
   </div>
 </section>
 
