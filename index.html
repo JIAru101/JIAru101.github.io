@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  
   :root {
     /* 更丰富的创意配色体系 */
     --ink: #111827;       
@@ -76,14 +75,14 @@
   .exp-points li::before { content: '→'; position: absolute; left: 0; color: var(--grad-2); font-weight: 700; }
 
   /* ========================================= */
-  /* 核心核心！作品集区域：实现瀑布流与完整展示 */
+  /* 核心核心！核心重构！实现瀑布流与完整展示 */
   /* ========================================= */
   
   .works-container {
     width: 100%;
     margin: 0 auto;
-    /* 采用多列布局实现简易瀑布流 */
-    column-count: 2; /* 默认为两列，适合展示详情页 */
+    /* 采用 CSS 列排版实现瀑布流 */
+    column-count: 3; /* 大屏默认为3列 */
     column-gap: 2rem; /* 列间距 */
   }
 
@@ -110,7 +109,7 @@
     border-color: rgba(79, 70, 229, 0.1);
   }
   
-  /* 图片容器：取消固定高度，实现完整展示 */
+  /* 图片容器：核心改变 */
   .work-thumb { 
     width: 100%; 
     height: auto; /* 高度自适应图片原本比例 */
@@ -122,12 +121,12 @@
     width: 100%; 
     height: auto; /* 核心：让图片完整显示 */
     display: block; /* 消除图片底部空隙 */
-    object-fit: contain; /* 核心：确保图片完整包裹在容器内 */
+    object-fit: contain; /* OR cover, contain ensures whole picture is inside */
     transition: transform 0.5s ease; 
   }
   
   .work-item:hover .work-thumb img { 
-    transform: scale(1.02); /* 轻微放大，提升互动感 */
+    transform: scale(1.02); /* 轻微放大 */
   }
   
   /* 作品卡片内容区增强 */
@@ -144,7 +143,7 @@
   .work-item:hover .wtag { background: var(--tag-bg-grad); color: var(--grad-1); }
 
   /* 联系板块精美化 */
-  .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: start; background: var(--surface); padding: 5rem; border-radius: 30px; box-shadow: 0 20px 70px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.01); background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM0ZjQ2ZTUiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTAgMGg0MHY0MEgwVjB6bTIwIDIwaDIwdjIwSDIWMjB6TTAgMjBoMjB2MjBIMFYyMHoyMCAwaDIwdjIwaC0yMFYweiIvPjwvZz48L2c+PC9zdmc+'); /* 极淡的几何背景图 */}
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: start; background: var(--surface); padding: 5rem; border-radius: 30px; box-shadow: 0 20px 70px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.01); }
   .contact-intro { font-size: 1.3rem; font-weight: 300; color: var(--ink-2); line-height: 1.8; margin-bottom: 3rem; }
   .contact-intro strong { color: var(--ink); font-weight: 600; background: var(--accent-grad); -webkit-background-clip: text; background-clip: text; color: transparent;}
   .contact-items { display: flex; flex-direction: column; gap: 2rem; }
@@ -165,17 +164,18 @@
 
   /* 响应式适配：核心调整 */
   @media (max-width: 1100px) {
-    .hero { grid-template-columns: 1fr; gap: 3rem; padding: 10rem 2rem 4rem; text-align: center; }
+    .hero { grid-template-columns: 1fr; gap: 3rem; padding: 10rem 2rem 4rem; text-transform: center; }
     .hero-visual { display: none; }
     .hero-eyebrow { justify-content: center; }
     .hero-sub { margin: 0 auto 3.5rem; }
     nav { padding: 1rem 2rem; }
-    .works-container { column-count: 1; /* 手机端变为单列 */ }
+    .works-container { column-count: 2; /* 手机端变为2列 */ }
     .contact-grid { grid-template-columns: 1fr; gap: 4rem; padding: 3rem; }
   }
   @media (max-width: 768px) {
     section { padding: 5rem 2rem; }
     .exp-item { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem; }
+    .works-container { column-count: 1; /* 极小屏单列 */ }
   }
 </style>
 </head>
@@ -195,14 +195,14 @@
   <div class="hero-text fade-in">
     <div class="hero-eyebrow">Visual Designer / AIGC Artist</div>
     <h1>让每一张图<br>都<span>开口说话</span></h1>
-    <p class="hero-sub">专注高转化率电商视觉，精通 3D 渲染与 AIGC 技术。从主图爆点策划到详情页逻辑闭环，打造更具溢价感的商业视觉体验。</p>
+    <p class="hero-sub">专注商业电商视觉全案设计，精通 PS、AI、C4D、Blender。擅长将 AIGC 技术深度融入商业工作流，打造高溢价感、高转化率的电商视觉系统。</p>
     <a class="hero-cta" href="#works">Explore my Portfolio</a>
   </div>
   <div class="hero-visual fade-in">
     <div class="hero-card">
       <div class="card-label">CURRENT ROLE</div>
       <div class="card-title">汕头千汇贸易 · 视觉设计操刀</div>
-      <div class="card-tags"><span class="card-tag">爆款主图</span><span class="card-tag">转化率全案</span><span class="card-tag">AIGC</span></div>
+      <div class="card-tags"><span class="card-tag">淘宝天猫主图</span><span class="card-tag">转化率逻辑全案</span><span class="card-tag">AIGC辅助设计</span></div>
     </div>
     <div class="hero-card">
       <div class="card-label">CORE TOOLS</div>
@@ -215,25 +215,10 @@
 <section id="about">
   <div class="section-num">01</div>
   <div class="section-title">关于我</div>
-  <div class="fade-in" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: start;">
-    <div class="about-body" style="font-size: 1.1rem; font-weight: 300; color: var(--ink-2); line-height: 1.9;">
-      <p style="margin-bottom: 1.5rem;">你好，我是 <strong>林佳茹</strong>。毕业于汕头职业技术学院数字媒体技术专业。我是一名不仅追求视觉“好看”，更追求电商“转化”的视觉设计师。</p>
-      <p style="margin-bottom: 1.5rem;">我拥有扎实的线下拍摄与后期精修功底，能够熟练运用 <strong>C4D/Blender 进行 3D 场景建模渲染</strong>，彻底突破实拍局限。在 AIGC 浪潮中，我已深度将 <strong>Midjourney 与 Stable Diffusion 融入商业工作流</strong>，不仅极大提升产出效率，更让画面呈现出超越实拍的高级溢价感。</p>
-      <p>我不仅是图片的制作者，更是产品卖点的视觉策划者。</p>
-    </div>
-    <div style="background: var(--surface); padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.01);">
-      <h4 style="margin-bottom: 1.5rem; font-size: 1.1rem;">核心技能熟练度</h4>
-      <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="display: flex; justify-content: space-between;"><span style="font-weight: 500;">PS 商业精修/合成</span><span style="color: var(--grad-1); font-weight: 700;">100%</span></div>
-        <div style="width: 100%; height: 6px; background: #eee; border-radius: 3px;"><div style="width: 100%; height: 6px; background: var(--accent-grad); border-radius: 3px;"></div></div>
-        
-        <div style="display: flex; justify-content: space-between; margin-top: 0.5rem;"><span style="font-weight: 500;">C4D/Blender 3D渲染</span><span style="color: var(--grad-1); font-weight: 700;">90%</span></div>
-        <div style="width: 100%; height: 6px; background: #eee; border-radius: 3px;"><div style="width: 90%; height: 6px; background: var(--accent-grad); border-radius: 3px;"></div></div>
-
-        <div style="display: flex; justify-content: space-between; margin-top: 0.5rem;"><span style="font-weight: 500;">AIGC 辅助设计 (MJ/SD)</span><span style="color: var(--grad-1); font-weight: 700;">95%</span></div>
-        <div style="width: 100%; height: 6px; background: #eee; border-radius: 3px;"><div style="width: 95%; height: 6px; background: var(--accent-grad); border-radius: 3px;"></div></div>
-      </div>
-    </div>
+  <div class="fade-in" style="font-size: 1.15rem; font-weight: 300; color: var(--ink-2); line-height: 1.9; max-width: 900px;">
+    <p style="margin-bottom: 1.5rem;">你好，我是 <strong>林佳茹</strong>，毕业于汕头职业技术学院数字媒体技术专业。现于汕头操刀电商视觉设计。我是一名不仅追求“精美”，更追求电商“转化”的视觉设计师。</p>
+    <p style="margin-bottom: 1.5rem;">我不仅精通 <strong>PS、AI、C4D、Blender</strong> 等核心设计工具，更具备扎实的产品外拍及商业精修基础。我能为品牌输出从拍摄策划、3D 渲染场景合成、到最终上线排版的全链路视觉全案。在面对亚马逊、天猫、淘宝等不同平台规范下，皆能打造出具有营销爆点的主图及高点击 A+ / 详情页面。</p>
+    <p>面对行业变革，我善于引入 <strong>AIGC 技术 (Midjourney/Stable Diffusion)</strong> 深度融入商业合成与场景迭代，将电商视觉产出效率提升逾 30%，以更具溢价感的视觉辅助品牌商业决策。</p>
   </div>
 </section>
 
@@ -245,12 +230,12 @@
       <div>
         <div class="exp-date">2025.02 — 至今</div>
         <div class="exp-company">汕头千汇贸易有限公司</div>
-        <div class="exp-role">视觉设计师 / 美工组核心</div>
+        <div class="exp-role">视觉设计师 / 美工</div>
       </div>
       <ul class="exp-points">
-        <li>主导多平台（淘宝、1688）店铺视觉风格重构，负责爆款产品主图、详情页逻辑全案设计。</li>
-        <li><strong>AIGC 赋能：</strong> 成功建立 AI 辅助场景生成工作流，将详情页首屏及场景合成产出效率提升逾 30%。</li>
-        <li>独立操刀产品拍摄与商业精修，把控品牌最终视觉输出质感。</li>
+        <li>主导多店铺淘宝、天猫、1688的核心视觉设计，独立操刀爆款主图策划、详情页逻辑闭环。</li>
+        <li>建立 AIGC 辅助设计工作流，将详情页场景合成效率提升30%。</li>
+        <li>负责产品外拍与摄影后期精修，把控品牌统一调性。</li>
       </ul>
     </div>
     <div class="exp-item">
@@ -260,8 +245,8 @@
         <div class="exp-role">品牌视觉美工</div>
       </div>
       <ul class="exp-points">
-        <li>负责线下市场部视觉物料，涵盖大型展会海报、画册及商务合作 PPT 视觉优化。</li>
-        <li>提升商务文稿视觉逻辑，助力团队商务签约成功率提升。</li>
+        <li>负责市场部线下展会物料、品牌画册及商务 PPT 演示视觉。</li>
+        <li>提升商务文稿视觉逻辑，助力商务签约。</li>
       </ul>
     </div>
     <div class="exp-item">
@@ -271,8 +256,8 @@
         <div class="exp-role">跨境电商美工</div>
       </div>
       <ul class="exp-points">
-        <li>专攻亚马逊 (Amazon) 平台视觉，产出高点击率广告投放图与 A+ 页面全案。</li>
-        <li>制作产品营销短视频，丰富跨境多媒体营销矩阵。</li>
+        <li>负责亚马逊 (Amazon) 平台爆款广告图、A+ 页面全案视觉设计。</li>
+        <li>制作产品营销短视频，丰富多媒体营销矩阵。</li>
       </ul>
     </div>
   </div>
@@ -286,13 +271,13 @@
     
     <a class="work-item" href="纸巾作品集22 拷贝.jpg" target="_blank">
       <div class="work-thumb">
-        <img src="纸巾作品集22 拷贝.jpg" alt="AIGC纸巾详情页全案设计">
+        <img src="纸巾作品集22 拷贝.jpg" alt="AIGC纸巾详情页设计">
       </div>
       <div class="work-body">
         <div class="work-num-box"><span class="work-num">01</span><span class="work-tag-main">AIGC 详情页全案</span></div>
-        <div class="work-title">商务抽纸 - AIGC 创意视觉与转化闭环</div>
-        <div class="work-desc">运用 AIGC 打破低质量实拍限制，重构清新、专业的商务空间，大幅提升产品溢价感。</div>
-        <div class="work-foot"><span class="wtag">场景构建</span><span class="wtag">转化逻辑</span><span class="wtag">爆款全案</span></div>
+        <div class="work-title">商务抽纸 - AIGC 清新视觉闭环</div>
+        <div class="work-desc">运用 AIGC 打破低质量实拍限制，构建清新自然的商业空间，提升产品溢价感。</div>
+        <div class="work-foot"><span class="wtag">场景构建</span><span class="wtag">转化逻辑</span></div>
       </div>
     </a>
 
@@ -301,22 +286,46 @@
         <img src="除胶剂作品集22 拷贝.jpg" alt="AIGC强力除胶剂详情页">
       </div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">02</span><span class="work-tag-main">3D & AI 融合全案</span></div>
-        <div class="work-title">超宝强力除胶剂 - AIGC 光影重塑</div>
-        <div class="work-desc">利用AI光影生成重塑产品3D质感，以“痛点-信任-转化”逻辑梳理，产出高标准的电商长图。</div>
-        <div class="work-foot"><span class="wtag">光影精修</span><span class="wtag">AIGC场景</span><span class="wtag">排版逻辑</span></div>
+        <div class="work-num-box"><span class="work-num">02</span><span class="work-tag-main">AIGC 详情页全案</span></div>
+        <div class="work-title">强力除胶剂 - AI 光影重塑商业视觉</div>
+        <div class="work-desc">利用AI光影重塑产品3D质感，以“痛点-信任-转化”逻辑梳理，产出高点击详情页面。</div>
+        <div class="work-foot"><span class="wtag">光影重构</span><span class="wtag">AIGC合成</span></div>
+      </div>
+    </a>
+
+    <a class="work-item" href="亚马逊1 拷贝 2.jpg" target="_blank">
+      <div class="work-thumb">
+        <img src="亚马逊1 拷贝 2.jpg" alt="亚马逊强力除胶剂跨境电商主图">
+      </div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">03</span><span class="work-tag-main">跨境电商主图设计</span></div>
+        <div class="work-title">超宝强力除胶剂 - 亚马逊点击爆点主图</div>
+        <div class="work-desc">采用多语种营销卖点排版，结合清晰的场景合成，提升跨境点击转化。</div>
+        <div class="work-foot"><span class="wtag">亚马逊 A+</span><span class="wtag">爆点营销</span></div>
       </div>
     </a>
 
     <a class="work-item" href="未标题-3.jpg" target="_blank">
       <div class="work-thumb">
-        <img src="未标题-3.jpg" alt="84消毒液爆款场景主图">
+        <img src="未标题-3.jpg" alt="84消毒液爆款主图">
       </div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">03</span><span class="work-tag-main">爆款场景主图</span></div>
-        <div class="work-title">84消毒液 - 居家健康场景营造</div>
-        <div class="work-desc">清晰的卖点排版结合温馨的家庭背景合成，瞬间传递“健康、安心”的产品特性。</div>
-        <div class="work-foot"><span class="wtag">主图设计</span><span class="wtag">场景合成</span><span class="wtag">卖点策划</span></div>
+        <div class="work-num-box"><span class="work-num">04</span><span class="work-tag-main">淘宝天猫主图</span></div>
+        <div class="work-title">84消毒液 - 居家健康场景合成</div>
+        <div class="work-desc">居家健康场景营造，通过温馨的家庭背景与清晰的卖点排版，提升点击转化。</div>
+        <div class="work-foot"><span class="wtag">场景合成</span><span class="wtag">卖点策划</span></div>
+      </div>
+    </a>
+
+    <a class="work-item" href="广告投放图1 拷贝.jpg" target="_blank">
+      <div class="work-thumb">
+        <img src="广告投放图1 拷贝.jpg" alt="广告投放图跨境 banner">
+      </div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">05</span><span class="work-tag-main">跨境电商 Banner</span></div>
+        <div class="work-title">超宝除胶剂 - 跨境 Banner 广告投放视觉</div>
+        <div class="work-desc">高点击率广告投放图设计，采用强对比的版式排版，瞬间传递核心卖点。</div>
+        <div class="work-foot"><span class="wtag">Banner 设计</span><span class="wtag">高点击图</span></div>
       </div>
     </a>
 
@@ -325,10 +334,22 @@
         <img src="酸性清洁剂 拷贝 2.jpg" alt="酸性清洁剂商务主图">
       </div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">04</span><span class="work-tag-main">专业级视觉主图</span></div>
-        <div class="work-title">酸性清洁剂 - 动感水流与强力去污</div>
-        <div class="work-desc">高对比度排版与动感的水流/气泡元素结合，突出产品“专业级别、洁净如新”的核心爆点。</div>
-        <div class="work-foot"><span class="wtag">版式排版</span><span class="wtag">动感合成</span><span class="wtag">质感精修</span></div>
+        <div class="work-num-box"><span class="work-num">06</span><span class="work-tag-main">天猫主图设计</span></div>
+        <div class="work-title">酸性清洁剂 - 动感合成视觉主图</div>
+        <div class="work-desc">高对比度排版与动感的水流/气泡元素结合，突出产品“强力去污、专业级别”的核心爆点。</div>
+        <div class="work-foot"><span class="wtag">动感排版</span><span class="wtag">质感精修</span></div>
+      </div>
+    </a>
+
+    <a class="work-item" href="亚马逊2 拷贝 2.jpg" target="_blank">
+      <div class="work-thumb">
+        <img src="亚马逊2 拷贝 2.jpg" alt="亚马逊跨境主图 A+">
+      </div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">07</span><span class="work-tag-main">跨境 A+ 营销视觉</span></div>
+        <div class="work-title">强力除胶剂 - 亚马逊无痕高效营销视觉</div>
+        <div class="work-desc">利用玻璃擦拭的对比视觉，直截了当地展示产品高效锁尘、无痕去胶效果。</div>
+        <div class="work-foot"><span class="wtag">对比视觉</span><span class="wtag">营销策划</span></div>
       </div>
     </a>
 
@@ -337,10 +358,22 @@
         <img src="详情1 拷贝.jpg" alt="柠檬家私蜡质感主图">
       </div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">05</span><span class="work-tag-main">溢价感质主图</span></div>
-        <div class="work-title">柠檬家私蜡 - 暖光下的滋养质感</div>
-        <div class="work-desc">采用高级皮质家居场景背书，精准烘托产品“重焕光泽、滋养润化”的调性。</div>
-        <div class="work-foot"><span class="wtag">主图设计</span><span class="wtag">光影烘托</span></div>
+        <div class="work-num-box"><span class="work-num">08</span><span class="work-tag-main">高级场景主图</span></div>
+        <div class="work-title">柠檬家私蜡 - 高级场景合成质感主图</div>
+        <div class="work-desc">采用高级皮质家居场景背书，精准烘托产品“重焕光泽、滋养润化”调性。</div>
+        <div class="work-foot"><span class="wtag">光影场景</span><span class="wtag">质感提升</span></div>
+      </div>
+    </a>
+
+    <a class="work-item" href="亚马逊4 拷贝 2.jpg" target="_blank">
+      <div class="work-thumb">
+        <img src="亚马逊4 拷贝 2.jpg" alt="亚马逊家私蜡场景合成跨境主图">
+      </div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">09</span><span class="work-tag-main">亚马逊 场景合成</span></div>
+        <div class="work-title">商务家私蜡 - 暖色调光影跨境场景视觉</div>
+        <div class="work-desc">结合高级木质空间场景，暖光光影烘托，传递自然溢价感调性。</div>
+        <div class="work-foot"><span class="wtag">场景融合</span><span class="wtag">溢价感设计</span></div>
       </div>
     </a>
 
@@ -349,10 +382,46 @@
         <img src="空气清新剂 拷贝 2.jpg" alt="空气清新剂清新主图">
       </div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">06</span><span class="work-tag-main">清新自然主图</span></div>
-        <div class="work-title">空气清新剂 - 自然植物与空气感</div>
-        <div class="work-desc">蓝天与自然植物元素的场景融合，视觉上直观传达“植物萃取、自然清新”。</div>
-        <div class="work-foot"><span class="wtag">主图设计</span><span class="wtag">场景融合</span></div>
+        <div class="work-num-box"><span class="work-num">10</span><span class="work-tag-main">天猫场景主图</span></div>
+        <div class="work-title">空气清新剂 - 自然清新合成主图</div>
+        <div class="work-desc">蓝天白云与自然植物元素的结合，视觉直观传达“植物萃取、自然清新”。</div>
+        <div class="work-foot"><span class="wtag">场景融合</span><span class="wtag">清新风格</span></div>
+      </div>
+    </a>
+
+    <a class="work-item" href="亚马逊5 拷贝 2.jpg" target="_blank">
+      <div class="work-thumb">
+        <img src="亚马逊5 拷贝 2.jpg" alt="亚马逊跨境电商主图消毒液">
+      </div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">11</span><span class="work-tag-main">跨境爆款主图</span></div>
+        <div class="work-title">商务消毒液 - 亚马逊居家安全爆点营销视觉</div>
+        <div class="work-desc">居家健康场景营造与精准的痛点、信任排版，打造高转化主图全案。</div>
+        <div class="work-foot"><span class="wtag">营销逻辑</span><span class="wtag">场景构建</span></div>
+      </div>
+    </a>
+
+    <a class="work-item" href="ok 拷贝 2.jpg" target="_blank">
+      <div class="work-thumb">
+        <img src="ok 拷贝 2.jpg" alt="静电吸尘埃剂商务主图">
+      </div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">12</span><span class="work-tag-main">天猫主图排版</span></div>
+        <div class="work-title">静电吸尘埃剂 - 高效锁尘合成主图</div>
+        <div class="work-desc">高对比度排版与动感的水流/气泡元素结合，突出产品“高效、专业”特性。</div>
+        <div class="work-foot"><span class="wtag">动感合成</span><span class="wtag">商业排版</span></div>
+      </div>
+    </a>
+
+    <a class="work-item" href="除胶剂 拷贝 2.jpg" target="_blank">
+      <div class="work-thumb">
+        <img src="除胶剂 拷贝 2.jpg" alt="除胶剂场景主图">
+      </div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">13</span><span class="work-tag-main">1688 主图设计</span></div>
+        <div class="work-title">强力无痕除胶剂 - 场景对比视觉主图</div>
+        <div class="work-desc">居家健康场景营造与卖点合成排版，直观传达“高效锁尘、无痕去胶”。</div>
+        <div class="work-foot"><span class="wtag">场景合成</span><span class="wtag">对比视觉</span></div>
       </div>
     </a>
 
@@ -364,7 +433,7 @@
   <div class="section-title">联系合作</div>
   <div class="contact-grid fade-in">
     <div>
-      <p class="contact-intro">有电商设计需求、AIGC 视觉经验交流合作？<br>随时欢迎你！我们在 <strong>汕头</strong> 恭候。</p>
+      <p class="contact-intro">寻求电商视觉全案设计、AIGC 视觉经验交流合作？<br>随时欢迎随时与我联系。我们在这里<strong>开口说话</strong>。</p>
       <div class="contact-items">
         <div class="contact-item"><div class="ci-icon">T</div><span>18026715687</span></div>
         <div class="contact-item"><div class="ci-icon">W</div><span>微信：JiaRu-oo</span></div>
@@ -372,7 +441,7 @@
       </div>
     </div>
     <div class="form">
-      <div><label>如何称呼您</label><input type="text" placeholder="姓名 / 公司名称"></div>
+      <div><label>如何称呼您</label><input type="text" placeholder="您的姓名 / 公司名称"></div>
       <div><label>联系方式</label><input type="text" placeholder="手机 / 微信 / 邮箱"></div>
       <div><label>项目需求</label><textarea placeholder="简单描述一下您的设计需求..."></textarea></div>
       <button class="form-btn">发送留言</button>
