@@ -3,476 +3,199 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JIAru — 设计师</title>
+<title>林佳茹 — 电商视觉设计师</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
   :root {
-    --ink: #1a1814;
-    --ink-2: #6b6760;
-    --ink-3: #b0ada8;
-    --paper: #f7f5f0;
-    --paper-2: #eeeae3;
-    --accent: #c8a96e;
+    --ink: #1a1814; --ink-2: #6b6760; --ink-3: #b0ada8;
+    --paper: #f7f5f0; --paper-2: #eeeae3; --accent: #c8a96e;
     --serif: 'DM Serif Display', Georgia, serif;
     --sans: 'DM Sans', sans-serif;
   }
-
   html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--paper); color: var(--ink); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 
-  body {
-    font-family: var(--sans);
-    background: var(--paper);
-    color: var(--ink);
-    font-size: 16px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.5rem 3rem;
-    background: rgba(247,245,240,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(26,24,20,0.08);
-  }
-  .nav-logo {
-    font-family: var(--serif);
-    font-size: 1.4rem;
-    letter-spacing: 0.02em;
-    color: var(--ink);
-    text-decoration: none;
-  }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; background: rgba(247,245,240,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,24,20,0.08); }
+  .nav-logo { font-family: var(--serif); font-size: 1.4rem; color: var(--ink); text-decoration: none; }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a {
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
+  .nav-links a { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-2); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--ink); }
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 8rem 3rem 4rem;
-    gap: 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    right: -10%;
-    top: 15%;
-    width: 55%;
-    height: 75%;
-    background: var(--paper-2);
-    border-radius: 3px;
-    z-index: 0;
-    transform: rotate(2deg);
-  }
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 8rem 3rem 4rem; gap: 4rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; right: -10%; top: 15%; width: 55%; height: 75%; background: var(--paper-2); border-radius: 3px; z-index: 0; transform: rotate(2deg); }
   .hero-text { position: relative; z-index: 1; }
-  .hero-eyebrow {
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    display: block;
-    width: 2rem;
-    height: 1px;
-    background: var(--accent);
-  }
-  .hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(3rem, 5vw, 5rem);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    margin-bottom: 2rem;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--ink-2);
-  }
-  .hero-sub {
-    font-size: 1rem;
-    color: var(--ink-2);
-    max-width: 380px;
-    line-height: 1.8;
-    margin-bottom: 2.5rem;
-    font-weight: 300;
-  }
-  .hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.85rem 2rem;
-    background: var(--ink);
-    color: var(--paper);
-    text-decoration: none;
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    border-radius: 2px;
-    transition: background 0.2s, gap 0.2s;
-  }
+  .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+  .hero-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--accent); }
+  .hero h1 { font-family: var(--serif); font-size: clamp(3rem, 5vw, 5rem); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 2rem; }
+  .hero h1 em { font-style: italic; color: var(--ink-2); }
+  .hero-sub { font-size: 1rem; color: var(--ink-2); max-width: 420px; line-height: 1.8; margin-bottom: 2.5rem; font-weight: 300; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 0.75rem; padding: 0.85rem 2rem; background: var(--ink); color: var(--paper); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; transition: background 0.2s, gap 0.2s; }
   .hero-cta:hover { background: var(--accent); gap: 1.2rem; }
-  .hero-cta span { font-size: 1.1rem; }
-  .hero-visual {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-end;
-  }
-  .hero-card {
-    background: white;
-    border: 1px solid rgba(26,24,20,0.1);
-    border-radius: 4px;
-    padding: 1.5rem;
-    width: 85%;
-    animation: float 6s ease-in-out infinite;
-  }
+  .hero-visual { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 1rem; align-items: flex-end; }
+  .hero-card { background: white; border: 1px solid rgba(26,24,20,0.1); border-radius: 4px; padding: 1.5rem; width: 85%; animation: float 6s ease-in-out infinite; }
   .hero-card:nth-child(2) { width: 70%; animation-delay: -2s; }
   .hero-card:nth-child(3) { width: 80%; animation-delay: -4s; }
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
-  }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
   .card-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.5rem; }
-  .card-title { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); }
+  .card-title { font-family: var(--serif); font-size: 1.1rem; }
   .card-tags { display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap; }
-  .card-tag {
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 3px 10px;
-    background: var(--paper-2);
-    border-radius: 2px;
-    color: var(--ink-2);
-  }
+  .card-tag { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; background: var(--paper-2); border-radius: 2px; color: var(--ink-2); }
 
-  /* SECTION BASE */
   section { padding: 7rem 3rem; max-width: 1100px; margin: 0 auto; }
-  .section-num {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .section-num::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--paper-2);
-    max-width: 3rem;
-  }
-  .section-title {
-    font-family: var(--serif);
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    line-height: 1.1;
-    margin-bottom: 3rem;
-    color: var(--ink);
-  }
-  hr.sep {
-    border: none;
-    border-top: 1px solid rgba(26,24,20,0.1);
-    max-width: 1100px;
-    margin: 0 auto;
-  }
+  .section-num { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-num::after { content: ''; flex: 1; height: 1px; background: var(--paper-2); max-width: 3rem; }
+  .section-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.1; margin-bottom: 3rem; }
+  hr.sep { border: none; border-top: 1px solid rgba(26,24,20,0.1); max-width: 1100px; margin: 0 auto; }
 
-  /* ABOUT */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 5rem;
-    align-items: start;
-  }
-  .about-body {
-    font-weight: 300;
-    font-size: 1.05rem;
-    color: var(--ink-2);
-    line-height: 1.9;
-  }
+  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
+  .about-body { font-weight: 300; font-size: 1.05rem; color: var(--ink-2); line-height: 1.9; }
   .about-body p { margin-bottom: 1.2rem; }
   .about-body strong { color: var(--ink); font-weight: 500; }
-
-  .skills { display: flex; flex-direction: column; gap: 0; }
-  .skill {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--paper-2);
-    gap: 1rem;
-  }
-  .skill-name { font-size: 0.85rem; letter-spacing: 0.05em; color: var(--ink); }
+  .skills { display: flex; flex-direction: column; }
+  .skill { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--paper-2); gap: 1rem; }
+  .skill-name { font-size: 0.85rem; color: var(--ink); }
   .skill-right { display: flex; align-items: center; gap: 1rem; }
   .skill-dots { display: flex; gap: 4px; }
-  .dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--paper-2);
-  }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--paper-2); }
   .dot.on { background: var(--accent); }
-  .skill-label { font-size: 0.7rem; color: var(--ink-3); letter-spacing: 0.08em; min-width: 30px; text-align: right; }
+  .skill-label { font-size: 0.7rem; color: var(--ink-3); min-width: 30px; text-align: right; }
 
-  /* WORKS */
-  .works-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-  .work-item {
-    background: white;
-    border: 1px solid rgba(26,24,20,0.08);
-    border-radius: 4px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
+  .exp-list { display: flex; flex-direction: column; }
+  .exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid var(--paper-2); }
+  .exp-date { font-size: 0.75rem; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.4rem; }
+  .exp-company { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.25rem; }
+  .exp-role { font-size: 0.8rem; color: var(--ink-3); }
+  .exp-points { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .exp-points li { font-size: 0.88rem; font-weight: 300; color: var(--ink-2); line-height: 1.7; padding-left: 1rem; position: relative; }
+  .exp-points li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-size: 0.8rem; }
+
+  .works-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .work-item { background: white; border: 1px solid rgba(26,24,20,0.08); border-radius: 4px; overflow: hidden; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; text-decoration: none; color: inherit; display: block; }
   .work-item:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(26,24,20,0.1); }
-  .work-thumb {
-    height: 220px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .work-thumb svg { opacity: 0.25; transition: opacity 0.3s; }
+  .work-thumb { height: 200px; display: flex; align-items: center; justify-content: center; }
+  .work-thumb svg { opacity: 0.2; transition: opacity 0.3s; }
   .work-item:hover .work-thumb svg { opacity: 0.4; }
   .work-body { padding: 1.5rem; }
   .work-num { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
-  .work-title { font-family: var(--serif); font-size: 1.25rem; margin-bottom: 0.4rem; }
+  .work-title { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.4rem; }
   .work-desc { font-size: 0.82rem; color: var(--ink-2); font-weight: 300; line-height: 1.6; }
   .work-foot { padding: 1rem 1.5rem; border-top: 1px solid var(--paper-2); display: flex; gap: 0.5rem; flex-wrap: wrap; }
   .wtag { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; background: var(--paper); border-radius: 2px; color: var(--ink-2); }
 
-  /* CONTACT */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 5rem;
-    align-items: start;
-  }
-  .contact-intro {
-    font-size: 1.05rem;
-    font-weight: 300;
-    color: var(--ink-2);
-    line-height: 1.9;
-    margin-bottom: 2rem;
-  }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
+  .contact-intro { font-size: 1.05rem; font-weight: 300; color: var(--ink-2); line-height: 1.9; margin-bottom: 2rem; }
   .contact-items { display: flex; flex-direction: column; gap: 1rem; }
-  .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: 0.9rem;
-    color: var(--ink-2);
-    font-weight: 300;
-  }
-  .ci-icon {
-    width: 2rem; height: 2rem;
-    border: 1px solid var(--paper-2);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.75rem;
-    color: var(--accent);
-    flex-shrink: 0;
-  }
-
+  .contact-item { display: flex; align-items: center; gap: 1rem; font-size: 0.9rem; color: var(--ink-2); font-weight: 300; }
+  .ci-icon { width: 2rem; height: 2rem; border: 1px solid var(--paper-2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--accent); flex-shrink: 0; font-weight: 500; }
   .form { display: flex; flex-direction: column; gap: 1rem; }
   .form label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); display: block; margin-bottom: 0.35rem; }
-  .form input, .form textarea {
-    width: 100%;
-    padding: 0.85rem 1rem;
-    border: 1px solid rgba(26,24,20,0.12);
-    border-radius: 3px;
-    background: white;
-    font-family: var(--sans);
-    font-size: 0.9rem;
-    color: var(--ink);
-    font-weight: 300;
-    outline: none;
-    transition: border-color 0.2s;
-  }
+  .form input, .form textarea { width: 100%; padding: 0.85rem 1rem; border: 1px solid rgba(26,24,20,0.12); border-radius: 3px; background: white; font-family: var(--sans); font-size: 0.9rem; color: var(--ink); font-weight: 300; outline: none; transition: border-color 0.2s; }
   .form input:focus, .form textarea:focus { border-color: var(--accent); }
   .form textarea { height: 120px; resize: none; }
-  .form-btn {
-    align-self: flex-start;
-    padding: 0.85rem 2rem;
-    background: var(--ink);
-    color: var(--paper);
-    border: none;
-    border-radius: 3px;
-    font-family: var(--sans);
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
+  .form-btn { align-self: flex-start; padding: 0.85rem 2rem; background: var(--ink); color: var(--paper); border: none; border-radius: 3px; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
   .form-btn:hover { background: var(--accent); }
 
-  /* FOOTER */
-  footer {
-    text-align: center;
-    padding: 2.5rem;
-    border-top: 1px solid rgba(26,24,20,0.08);
-    font-size: 0.75rem;
-    color: var(--ink-3);
-    letter-spacing: 0.08em;
-  }
-
-  /* FADE IN */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
+  footer { text-align: center; padding: 2.5rem; border-top: 1px solid rgba(26,24,20,0.08); font-size: 0.75rem; color: var(--ink-3); letter-spacing: 0.08em; }
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .fade-in.visible { opacity: 1; transform: none; }
 
   @media (max-width: 768px) {
     nav { padding: 1.2rem 1.5rem; }
-    .nav-links { gap: 1.5rem; }
+    .nav-links { gap: 1rem; }
     .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
     .hero::before { display: none; }
     .hero-visual { display: none; }
     section { padding: 4rem 1.5rem; }
     .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
     .works-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="nav-logo" href="#">JIAru.</a>
+  <a class="nav-logo" href="#">林佳茹.</a>
   <ul class="nav-links">
     <li><a href="#about">关于</a></li>
+    <li><a href="#experience">经历</a></li>
     <li><a href="#works">作品</a></li>
     <li><a href="#contact">联系</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-text fade-in">
-    <div class="hero-eyebrow">设计师 · 创意人</div>
-    <h1>用设计<br>说出<em>无声的话</em></h1>
-    <p class="hero-sub">专注品牌视觉与用户体验，相信好的设计是一种安静的力量。</p>
-    <a class="hero-cta" href="#works">查看作品 <span>→</span></a>
+    <div class="hero-eyebrow">电商视觉设计师</div>
+    <h1>让每一张图<br>都<em>开口说话</em></h1>
+    <p class="hero-sub">专注电商视觉设计，熟练运用 PS、AI、C4D 等工具，擅长主图、详情页及店铺整体视觉规划。</p>
+    <a class="hero-cta" href="#works">查看作品 →</a>
   </div>
   <div class="hero-visual fade-in">
     <div class="hero-card">
-      <div class="card-label">最新项目</div>
-      <div class="card-title">品牌视觉系统</div>
-      <div class="card-tags">
-        <span class="card-tag">品牌</span>
-        <span class="card-tag">VI</span>
-        <span class="card-tag">Logo</span>
-      </div>
+      <div class="card-label">现任职位</div>
+      <div class="card-title">汕头千汇贸易 · 美工</div>
+      <div class="card-tags"><span class="card-tag">主图</span><span class="card-tag">详情页</span><span class="card-tag">AIGC</span></div>
     </div>
     <div class="hero-card">
-      <div class="card-label">进行中</div>
-      <div class="card-title">App 界面设计</div>
-      <div class="card-tags">
-        <span class="card-tag">UI/UX</span>
-        <span class="card-tag">Figma</span>
-      </div>
+      <div class="card-label">擅长工具</div>
+      <div class="card-title">PS · AI · C4D · Blender</div>
+      <div class="card-tags"><span class="card-tag">设计</span><span class="card-tag">修图</span><span class="card-tag">3D</span></div>
     </div>
     <div class="hero-card">
-      <div class="card-label">个人创作</div>
-      <div class="card-title">插画系列</div>
-      <div class="card-tags">
-        <span class="card-tag">插画</span>
-        <span class="card-tag">创意</span>
-      </div>
+      <div class="card-label">兴趣爱好</div>
+      <div class="card-title">音乐 · 画画 · 摄影 · 羽毛球</div>
+      <div class="card-tags"><span class="card-tag">创意</span><span class="card-tag">生活</span></div>
     </div>
   </div>
 </div>
 
 <hr class="sep">
 
-<!-- ABOUT -->
 <section id="about">
   <div class="section-num">01 · About</div>
   <div class="section-title">关于我</div>
   <div class="about-grid fade-in">
     <div class="about-body">
-      <p>你好，我是 <strong>JIAru</strong>，一名独立设计师。拥有多年品牌与数字产品设计经验，曾服务于消费品、文化艺术、科技等多个领域。</p>
-      <p>我相信设计的本质是<strong>解决问题</strong>，每一个视觉决策都应该有其意义。我喜欢在克制与美感之间寻找那个刚刚好的平衡点。</p>
-      <p>目前开放接受新项目合作，欢迎聊聊你的想法。</p>
+      <p>你好，我是 <strong>林佳茹</strong>，一名专注电商视觉的设计师。毕业于汕头职业技术学院数字媒体应用技术专业，现居汕头龙湖区。</p>
+      <p>拥有多年电商美工经验，服务过淘宝、天猫、阿里巴巴、亚马逊等平台。熟练掌握 <strong>PS、AI、CDR、Blender、C4D</strong> 等工具，能独立完成从产品拍摄到页面上线的完整视觉输出。</p>
+      <p>工作认真负责，善于灵活运用 <strong>AIGC</strong> 技术提升设计效率，热爱设计，乐于尝试新事物。</p>
     </div>
     <div class="skills">
       <div class="skill">
-        <span class="skill-name">品牌设计</span>
+        <span class="skill-name">Photoshop</span>
         <div class="skill-right">
-          <div class="skill-dots">
-            <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div>
-          </div>
+          <div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
           <span class="skill-label">精通</span>
         </div>
       </div>
       <div class="skill">
-        <span class="skill-name">UI / UX</span>
+        <span class="skill-name">Illustrator / CDR</span>
         <div class="skill-right">
-          <div class="skill-dots">
-            <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div>
-          </div>
+          <div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
           <span class="skill-label">熟练</span>
         </div>
       </div>
       <div class="skill">
-        <span class="skill-name">Figma</span>
+        <span class="skill-name">C4D / Blender</span>
         <div class="skill-right">
-          <div class="skill-dots">
-            <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div>
-          </div>
+          <div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
+          <span class="skill-label">熟练</span>
+        </div>
+      </div>
+      <div class="skill">
+        <span class="skill-name">产品拍摄 / 修图</span>
+        <div class="skill-right">
+          <div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
           <span class="skill-label">精通</span>
         </div>
       </div>
       <div class="skill">
-        <span class="skill-name">After Effects</span>
+        <span class="skill-name">AIGC 辅助设计</span>
         <div class="skill-right">
-          <div class="skill-dots">
-            <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div>
-          </div>
-          <span class="skill-label">良好</span>
-        </div>
-      </div>
-      <div class="skill">
-        <span class="skill-name">插画 / 手绘</span>
-        <div class="skill-right">
-          <div class="skill-dots">
-            <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div>
-          </div>
+          <div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
           <span class="skill-label">熟练</span>
         </div>
       </div>
@@ -482,109 +205,129 @@
 
 <hr class="sep">
 
-<!-- WORKS -->
+<section id="experience">
+  <div class="section-num">02 · Experience</div>
+  <div class="section-title">工作经历</div>
+  <div class="exp-list fade-in">
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">2025.02 — 至今</div>
+        <div class="exp-company">汕头千汇贸易有限公司</div>
+        <div class="exp-role">美工</div>
+      </div>
+      <ul class="exp-points">
+        <li>负责淘宝、天猫、阿里巴巴等平台整体视觉设计，涵盖主图、详情页、SKU 图等核心内容创意与落地。</li>
+        <li>独立完成产品拍摄、图片修饰及详情页设计，拥有从拍摄到成片的完整视觉输出能力。</li>
+        <li>灵活运用 AIGC 进行设计辅助，提升视觉画面表现力与工作效率。</li>
+        <li>独立负责多个店铺视觉设计与更新维护，确保品牌调性统一、画面风格一致。</li>
+      </ul>
+    </div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">2022.11 — 2024.12</div>
+        <div class="exp-company">博易实业（深圳）有限公司</div>
+        <div class="exp-role">美工</div>
+      </div>
+      <ul class="exp-points">
+        <li>主导公司市场部门物料设计，包括展会、海报等宣传品。</li>
+        <li>设计并优化商业合作 PPT 模板，助力签约率提升。</li>
+        <li>负责部分产品拍摄与图片处理，改进视觉效果。</li>
+        <li>协助市场数据收集与分析，核销市场推广费用。</li>
+      </ul>
+    </div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">2022.03 — 2022.09</div>
+        <div class="exp-company">深圳矩焦有限公司</div>
+        <div class="exp-role">跨境美工</div>
+      </div>
+      <ul class="exp-points">
+        <li>负责亚马逊平台产品广告投放图设计，提升点击率和转化率。</li>
+        <li>制作売壳替换图，优化站内图片，根据运营需求持续改进，促进销售增长。</li>
+        <li>剪辑和制作产品视频素材，增强营销效果。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
 <section id="works">
-  <div class="section-num">02 · Works</div>
+  <div class="section-num">03 · Works</div>
   <div class="section-title">作品展示</div>
   <div class="works-grid fade-in">
     <a class="work-item" href="#">
       <div class="work-thumb" style="background:#eeeae3;">
-        <svg width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="40" r="30" stroke="#1a1814" stroke-width="2" fill="none"/><line x1="40" y1="10" x2="40" y2="70" stroke="#1a1814" stroke-width="2"/><line x1="10" y1="40" x2="70" y2="40" stroke="#1a1814" stroke-width="2"/></svg>
+        <svg width="80" height="80" viewBox="0 0 80 80"><rect x="10" y="15" width="60" height="50" rx="3" stroke="#1a1814" stroke-width="2" fill="none"/><rect x="20" y="25" width="40" height="6" rx="2" fill="#1a1814"/><rect x="20" y="38" width="25" height="4" rx="2" fill="#1a1814"/></svg>
       </div>
       <div class="work-body">
         <div class="work-num">01</div>
-        <div class="work-title">品牌视觉系统</div>
-        <div class="work-desc">某消费品牌从零到一的完整视觉体系建立，含 Logo、色彩、字体、应用规范。</div>
+        <div class="work-title">电商详情页设计</div>
+        <div class="work-desc">淘宝/天猫产品详情页视觉方案，从卖点提炼到画面落地。</div>
       </div>
-      <div class="work-foot">
-        <span class="wtag">品牌</span><span class="wtag">Logo</span><span class="wtag">VI</span>
-      </div>
+      <div class="work-foot"><span class="wtag">详情页</span><span class="wtag">排版</span><span class="wtag">PS</span></div>
     </a>
     <a class="work-item" href="#">
       <div class="work-thumb" style="background:#e8eef5;">
-        <svg width="80" height="80" viewBox="0 0 80 80"><rect x="15" y="10" width="50" height="60" rx="4" stroke="#1a1814" stroke-width="2" fill="none"/><rect x="25" y="22" width="30" height="4" rx="2" fill="#1a1814"/><rect x="25" y="34" width="20" height="4" rx="2" fill="#1a1814"/></svg>
+        <svg width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="40" r="28" stroke="#1a1814" stroke-width="2" fill="none"/><circle cx="40" cy="40" r="14" stroke="#1a1814" stroke-width="1.5" fill="none"/><circle cx="40" cy="40" r="4" fill="#1a1814"/></svg>
       </div>
       <div class="work-body">
         <div class="work-num">02</div>
-        <div class="work-title">App 界面设计</div>
-        <div class="work-desc">健康类 App 全流程用户体验设计，从用研到高保真原型的完整交付。</div>
+        <div class="work-title">产品主图设计</div>
+        <div class="work-desc">多平台产品主图视觉优化，提升点击率与转化率。</div>
       </div>
-      <div class="work-foot">
-        <span class="wtag">UI/UX</span><span class="wtag">Figma</span><span class="wtag">原型</span>
-      </div>
+      <div class="work-foot"><span class="wtag">主图</span><span class="wtag">电商</span><span class="wtag">亚马逊</span></div>
     </a>
     <a class="work-item" href="#">
       <div class="work-thumb" style="background:#f0ede8;">
-        <svg width="80" height="80" viewBox="0 0 80 80"><polygon points="40,12 68,60 12,60" stroke="#1a1814" stroke-width="2" fill="none"/></svg>
+        <svg width="80" height="80" viewBox="0 0 80 80"><rect x="12" y="20" width="56" height="40" rx="3" stroke="#1a1814" stroke-width="2" fill="none"/><line x1="12" y1="32" x2="68" y2="32" stroke="#1a1814" stroke-width="1.5"/><circle cx="22" cy="26" r="3" fill="#1a1814"/></svg>
       </div>
       <div class="work-body">
         <div class="work-num">03</div>
-        <div class="work-title">文化活动海报</div>
-        <div class="work-desc">系列文化活动视觉传达与印刷物料设计，注重版式与图形语言的统一性。</div>
+        <div class="work-title">展会 & 海报物料</div>
+        <div class="work-desc">线下展会宣传物料及品牌海报设计，注重视觉冲击与信息传达。</div>
       </div>
-      <div class="work-foot">
-        <span class="wtag">平面</span><span class="wtag">印刷</span><span class="wtag">版式</span>
-      </div>
+      <div class="work-foot"><span class="wtag">海报</span><span class="wtag">展会</span><span class="wtag">印刷</span></div>
     </a>
     <a class="work-item" href="#">
       <div class="work-thumb" style="background:#eef0e8;">
-        <svg width="80" height="80" viewBox="0 0 80 80"><path d="M40 15 Q55 25 65 40 Q55 55 40 65 Q25 55 15 40 Q25 25 40 15Z" stroke="#1a1814" stroke-width="2" fill="none"/></svg>
+        <svg width="80" height="80" viewBox="0 0 80 80"><polygon points="32,22 62,40 32,58" stroke="#1a1814" stroke-width="2" fill="none"/><circle cx="40" cy="40" r="30" stroke="#1a1814" stroke-width="1.5" fill="none"/></svg>
       </div>
       <div class="work-body">
         <div class="work-num">04</div>
-        <div class="work-title">插画系列创作</div>
-        <div class="work-desc">个人系列插画及商业合作作品，探索自然与几何形态之间的视觉对话。</div>
+        <div class="work-title">产品视频剪辑</div>
+        <div class="work-desc">电商平台产品宣传视频素材剪辑与制作，增强营销转化效果。</div>
       </div>
-      <div class="work-foot">
-        <span class="wtag">插画</span><span class="wtag">创意</span><span class="wtag">商业</span>
-      </div>
+      <div class="work-foot"><span class="wtag">视频</span><span class="wtag">剪辑</span><span class="wtag">营销</span></div>
     </a>
   </div>
 </section>
 
 <hr class="sep">
 
-<!-- CONTACT -->
 <section id="contact">
-  <div class="section-num">03 · Contact</div>
+  <div class="section-num">04 · Contact</div>
   <div class="section-title">联系我</div>
   <div class="contact-grid fade-in">
     <div>
-      <p class="contact-intro">有项目合作或有趣的想法？<br>很高兴与你聊聊。</p>
+      <p class="contact-intro">有设计合作或项目需求？<br>欢迎随时联系我。</p>
       <div class="contact-items">
-        <div class="contact-item">
-          <div class="ci-icon">@</div>
-          <span>yourname@email.com</span>
-        </div>
-        <div class="contact-item">
-          <div class="ci-icon">W</div>
-          <span>微信：yourwechat</span>
-        </div>
-        <div class="contact-item">
-          <div class="ci-icon">Be</div>
-          <span>Behance / Dribbble</span>
-        </div>
+        <div class="contact-item"><div class="ci-icon">Tel</div><span>18026715687</span></div>
+        <div class="contact-item"><div class="ci-icon">W</div><span>微信：JiaRu-oo</span></div>
+        <div class="contact-item"><div class="ci-icon">@</div><span>LinJiaRu_0110@163.com</span></div>
+        <div class="contact-item"><div class="ci-icon">地</div><span>汕头市龙湖区</span></div>
       </div>
     </div>
     <div class="form">
-      <div>
-        <label>姓名</label>
-        <input type="text" placeholder="你的名字">
-      </div>
-      <div>
-        <label>邮箱</label>
-        <input type="email" placeholder="your@email.com">
-      </div>
-      <div>
-        <label>留言</label>
-        <textarea placeholder="聊聊你的项目..."></textarea>
-      </div>
+      <div><label>姓名</label><input type="text" placeholder="你的名字"></div>
+      <div><label>邮箱</label><input type="email" placeholder="your@email.com"></div>
+      <div><label>留言</label><textarea placeholder="聊聊你的项目或需求..."></textarea></div>
       <button class="form-btn">发送消息 →</button>
     </div>
   </div>
 </section>
 
-<footer>© 2026 JIAru. 保留所有权利。</footer>
+<footer>© 2026 林佳茹. 保留所有权利。</footer>
 
 <script>
 const obs = new IntersectionObserver(entries => {
