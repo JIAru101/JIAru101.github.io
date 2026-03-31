@@ -11,7 +11,7 @@
     --ink: #111827;       
     --ink-2: #4B5563;     
     --ink-muted: #9CA3AF; 
-    --bg: #F9FAFB;
+    --bg: #F4F5F8;        /* 微调网页底色，让纯白色的内容卡片更凸显 */
     --surface: #FFFFFF;   
     
     --grad-1: #4F46E5;    
@@ -24,7 +24,7 @@
   
   html { scroll-behavior: smooth; }
   
-  /* 增加网页全局静态氛围光晕 */
+  /* 增加网页全局静态氛围光晕，丰富长图背景层级 */
   body { 
     font-family: var(--sans); 
     background: var(--bg); 
@@ -72,33 +72,87 @@
 
   section { padding: 8rem 4rem; max-width: 1400px; margin: 0 auto; }
   .section-num { font-size: 0.9rem; font-weight: 700; color: var(--grad-2); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; text-transform: uppercase; }
-  .section-title { font-size: clamp(2.5rem, 4vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: 5rem; color: #111827; position: relative; display: inline-block;}
+  .section-title { font-size: clamp(2.5rem, 4vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: 4rem; color: #111827; position: relative; display: inline-block;}
   .section-title::after { content: ''; position: absolute; left: 0; bottom: -10px; width: 60px; height: 4px; background: var(--accent-grad); border-radius: 2px; }
   
-  /* ======== 新增：将“关于我”升级为高级深色质感色块 ======== */
+  /* ========================================================= */
+  /* 核心升级：“关于我”与“经历”无缝合体，打造长卷轴简历效果 */
+  /* ========================================================= */
+  
+  /* 上半部分：关于我（裁切掉下圆角） */
   #about {
-    background: var(--ink);
-    border-radius: 40px;
-    padding: 6rem 5rem;
+    background: var(--surface);
+    border-radius: 40px 40px 0 0; 
+    padding: 6rem 5rem 3rem 5rem;
     margin-top: 2rem;
-    margin-bottom: 4rem;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    margin-bottom: 0; /* 去除间距，与下方经历无缝贴合 */
+    box-shadow: 0 10px 40px rgba(0,0,0,0.02);
     position: relative;
-    overflow: hidden;
+    z-index: 2;
   }
-  #about::before {
-    content: ''; position: absolute; top: -50%; right: -20%; width: 80%; height: 150%;
-    background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  #about .section-title { color: #FFFFFF; }
-  #about .section-num { color: #818CF8; } /* 调整数字颜色适配深色 */
+  
+  /* 文字增加左侧渐变修饰线，强化排版秩序 */
   .about-text {
-    font-size: 1.15rem; font-weight: 300; color: #D1D5DB; line-height: 1.9; max-width: 900px; position: relative; z-index: 1;
+    font-size: 1.15rem; 
+    font-weight: 300; 
+    color: var(--ink-2); 
+    line-height: 1.9; 
+    max-width: 900px;
+    padding-left: 2.5rem;
+    position: relative;
   }
-  .about-text strong { color: #FFFFFF; font-weight: 600; }
+  .about-text::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    bottom: 5px;
+    width: 4px;
+    background: var(--accent-grad);
+    border-radius: 4px;
+  }
 
-  /* ======== 工作经历板块：静态质感升级（无需Hover也好看） ======== */
+  /* 下半部分：经历板块（裁切掉上圆角） */
+  #experience {
+    background: var(--surface);
+    border-radius: 0 0 40px 40px;
+    padding: 3rem 5rem 6rem 5rem;
+    margin-top: 0; 
+    margin-bottom: 6rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.02);
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* 两者的缝合处：精致的虚线分隔 + 导向标签 */
+  #experience::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 5rem;
+    right: 5rem;
+    height: 1px;
+    background: repeating-linear-gradient(to right, rgba(0,0,0,0.08) 0, rgba(0,0,0,0.08) 8px, transparent 8px, transparent 16px);
+  }
+  
+  #experience::after {
+    content: 'CAREER PATH ↓';
+    position: absolute;
+    top: 0;
+    left: 5rem;
+    transform: translateY(-50%);
+    background: var(--accent-grad);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 6px 18px;
+    border-radius: 50px;
+    letter-spacing: 0.1em;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+    z-index: 10;
+  }
+
+  /* 调整经历卡片样式，使其在纯白底色中更具层次 */
   .exp-list { display: flex; flex-direction: column; gap: 2.5rem; }
   
   .exp-item { 
@@ -106,13 +160,11 @@
     grid-template-columns: 260px 1fr; 
     gap: 4rem; 
     padding: 3.5rem; 
-    /* 静态下自带微渐变底色和柔和阴影 */
-    background: linear-gradient(145deg, #ffffff 0%, #fcfcff 100%); 
+    /* 采用浅灰色作为卡片底色，在白底简历中跳出来 */
+    background: #FAFAFB; 
     border-radius: 24px; 
-    box-shadow: 0 10px 40px rgba(79, 70, 229, 0.04); 
-    border: 1px solid rgba(79, 70, 229, 0.06); 
-    /* 静态下常驻的渐变左边框 */
-    border-left: 6px solid var(--grad-1);
+    border: 1px solid rgba(0,0,0,0.03); 
+    border-left: 6px solid var(--grad-1); /* 静态高光边界 */
     position: relative; 
   }
   
@@ -121,65 +173,25 @@
     font-size: 0.85rem; 
     font-weight: 700; 
     color: var(--grad-1); 
-    background: var(--tag-bg-grad);
+    background: white; /* 标签变白 */
     padding: 6px 16px;
     border-radius: 50px;
     margin-bottom: 1.5rem; 
     letter-spacing: 0.05em;
-    border: 1px solid rgba(79, 70, 229, 0.1);
+    border: 1px solid rgba(79, 70, 229, 0.15);
   }
   
-  .exp-company { 
-    font-size: 1.4rem; 
-    font-weight: 700; 
-    margin-bottom: 0.6rem; 
-    color: #111827; 
-    letter-spacing: 0.02em;
-  }
+  .exp-company { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.6rem; color: #111827; letter-spacing: 0.02em; }
+  .exp-role { font-size: 1.05rem; color: var(--ink-2); font-weight: 500; display: flex; align-items: center; gap: 0.6rem; }
+  .exp-role::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--grad-2); border-radius: 2px; }
   
-  .exp-role { 
-    font-size: 1.05rem; 
-    color: var(--ink-2); 
-    font-weight: 500; 
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-  .exp-role::before {
-    content: '';
-    display: inline-block;
-    width: 16px;
-    height: 2px;
-    background: var(--grad-2);
-    border-radius: 2px;
-  }
-  
-  .exp-points { 
-    list-style: none; 
-    display: flex; 
-    flex-direction: column; 
-    gap: 1.25rem; 
-  }
-  .exp-points li { 
-    font-size: 1rem; 
-    font-weight: 300; 
-    color: var(--ink-2); 
-    padding-left: 2rem; 
-    position: relative; 
-    line-height: 1.8; 
-  }
-  
+  .exp-points { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
+  .exp-points li { font-size: 1rem; font-weight: 300; color: var(--ink-2); padding-left: 2rem; position: relative; line-height: 1.8; }
   .exp-points li::before { 
-    content: ''; 
-    position: absolute; 
-    left: 0; 
-    top: 0.6rem; 
-    width: 6px;
-    height: 6px;
-    background: var(--accent-grad);
-    border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+    content: ''; position: absolute; left: 0; top: 0.6rem; width: 6px; height: 6px;
+    background: var(--accent-grad); border-radius: 50%; box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
   }
+  /* ========================================================= */
 
   /* 作品集列表排版 */
   .works-single-column {
@@ -199,25 +211,12 @@
     overflow: hidden; 
     text-decoration: none; 
     color: inherit; 
-    /* 静态下加重卡片边界感 */
     border: 1px solid rgba(0,0,0,0.04);
     box-shadow: 0 8px 30px rgba(0,0,0,0.03);
   }
   
-  .work-thumb { 
-    width: 100%; 
-    height: auto; 
-    overflow: hidden; 
-    border-bottom: 1px solid rgba(0,0,0,0.03);
-    /* 给图片底色加上一点点灰度，让产品图更突出 */
-    background: #F3F4F6; 
-  }
-  .work-thumb img { 
-    width: 100%; 
-    height: auto; 
-    display: block; 
-    object-fit: contain;
-  }
+  .work-thumb { width: 100%; height: auto; overflow: hidden; border-bottom: 1px solid rgba(0,0,0,0.03); background: #F3F4F6; }
+  .work-thumb img { width: 100%; height: auto; display: block; object-fit: contain; }
   
   .work-body { padding: 1.8rem; }
   .work-num-box { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
@@ -225,22 +224,14 @@
   .work-tag-main { font-size: 0.8rem; font-weight: 600; color: var(--grad-1); text-transform: uppercase;}
   .work-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.75rem; color: #111827; line-height: 1.3;}
   .work-desc { font-size: 0.95rem; color: var(--ink-2); font-weight: 300; line-height: 1.7; margin-bottom: 1.5rem;}
-  
   .work-foot { padding-top: 1.2rem; border-top: 1px solid rgba(0,0,0,0.03); display: flex; gap: 0.6rem; flex-wrap: wrap; }
   .wtag { font-size: 0.75rem; font-weight: 500; padding: 6px 14px; background: #F3F4F6; border-radius: 50px; color: var(--ink-2); }
 
-  /* ======== 联系模块：加入静态微渐变色块 ======== */
+  /* 联系模块 */
   .contact-grid { 
-    display: grid; 
-    grid-template-columns: 1fr 1.1fr; 
-    gap: 5rem; 
-    align-items: start; 
-    /* 静态下自带高级紫白渐变 */
+    display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: start; 
     background: linear-gradient(135deg, #ffffff 0%, rgba(79, 70, 229, 0.03) 100%);
-    padding: 5rem; 
-    border-radius: 30px; 
-    box-shadow: 0 20px 70px rgba(0,0,0,0.04); 
-    border: 1px solid rgba(79, 70, 229, 0.08); 
+    padding: 5rem; border-radius: 30px; box-shadow: 0 20px 70px rgba(0,0,0,0.04); border: 1px solid rgba(79, 70, 229, 0.08); 
   }
   .contact-intro { font-size: 1.3rem; font-weight: 300; color: var(--ink-2); line-height: 1.8; margin-bottom: 3rem; }
   .contact-intro strong { color: #111827; font-weight: 600; background: var(--accent-grad); -webkit-background-clip: text; background-clip: text; color: transparent;}
@@ -256,7 +247,7 @@
 
   footer { text-align: center; padding: 4rem 2rem; font-size: 0.9rem; color: var(--ink-muted); border-top: 1px solid rgba(0,0,0,0.02); margin-top: 2rem;}
   
-  /* 为了截图，我们将 fade-in 默认设置为可见，避免截图软件滚动太快导致内容空白 */
+  /* 针对截图需求关闭透明度动画 */
   .fade-in { opacity: 1; transform: none; }
 
   @media (max-width: 1100px) {
@@ -266,13 +257,22 @@
     .hero-sub { margin: 0 auto 3.5rem; }
     nav { padding: 1rem 2rem; }
     .contact-grid { grid-template-columns: 1fr; gap: 4rem; padding: 3rem; }
-    #about { padding: 4rem 3rem; }
+    
+    #about { padding: 5rem 3rem 2rem 3rem; }
+    #experience { padding: 2rem 3rem 5rem 3rem; }
+    #experience::before { left: 3rem; right: 3rem; }
+    #experience::after { left: 3rem; }
   }
   @media (max-width: 768px) {
     section { padding: 5rem 2rem; }
     .exp-item { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem; border-left: none; border-top: 4px solid var(--grad-1); }
     .works-single-column { max-width: 100%; gap: 2.5rem; } 
-    #about { padding: 3rem 2rem; border-radius: 24px; }
+    
+    #about { padding: 4rem 2rem 2rem 2rem; border-radius: 24px 24px 0 0; }
+    #experience { padding: 2rem 2rem 4rem 2rem; border-radius: 0 0 24px 24px; }
+    #experience::before { left: 2rem; right: 2rem; }
+    #experience::after { left: 2rem; }
+    .about-text { padding-left: 1.5rem; }
   }
 </style>
 </head>
