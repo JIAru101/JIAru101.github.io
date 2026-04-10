@@ -34,7 +34,7 @@
     position: relative;
   }
   
-  /* 背景氛圍装飾 */
+  /* 背景氛围装饰 */
   body::before { 
     content: ''; position: absolute; top: -5%; left: -10%; width: 60vw; height: 60vw;
     background: radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, transparent 70%); 
@@ -52,33 +52,45 @@
   .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--ink-2); text-decoration: none; transition: color 0.2s; display: inline-block; }
   .nav-links a:hover { color: var(--grad-1); }
 
-  /* Hero Section 佈局調整 */
-  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; padding: 8rem 4rem 4rem; gap: 4rem; max-width: 1400px; margin: 0 auto; }
-  .hero-eyebrow { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em; margin-bottom: 1.5rem; text-transform: uppercase; background: var(--accent-grad); -webkit-background-clip: text; background-clip: text; color: transparent; display: flex; align-items: center; gap: 0.75rem;}
-  .hero-eyebrow::before { content: ''; display: block; width: 30px; height: 2px; background: var(--accent-grad); border-radius: 2px; }
-  .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 2rem; color: #111827; }
-  .hero h1 span { background: var(--accent-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .hero-sub { font-size: 1.1rem; color: var(--ink-2); max-width: 520px; line-height: 1.8; margin-bottom: 3rem; font-weight: 300; }
-  .hero-cta { display: inline-flex; align-items: center; justify-content: center; padding: 1.1rem 2.8rem; background: var(--accent-grad); color: white; text-decoration: none; font-size: 1rem; font-weight: 600; border-radius: 50px; box-shadow: 0 10px 30px rgba(79, 70, 229, 0.2); transition: all 0.3s; }
-  .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(79, 70, 229, 0.3); }
+  /* Hero Section 核心修改：移除左右布局，图片居中且对齐宽度 */
+  .hero { 
+    padding: 8rem 0 2rem; 
+    max-width: 1060px; /* 与下方 section 宽度一致 */
+    margin: 0 auto; 
+    display: flex;
+    justify-content: center;
+  }
   
-  .hero-visual { position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05); }
-  .hero-visual img { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
-  .hero-visual:hover img { transform: scale(1.02); }
+  .hero-visual { 
+    width: 100%;
+    position: relative; 
+    border-radius: 24px; 
+    overflow: hidden; 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.05); 
+  }
+  .hero-visual img { 
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    transition: transform 0.5s ease;
+  }
+  .hero-visual:hover img { transform: scale(1.01); }
 
-  /* 簡歷畫板樣式 */
-  section { padding: 6rem 4rem; max-width: 1060px; margin: 0 auto; }
+  /* 简历及作品集统一样式 */
+  section { padding: 4rem 0; max-width: 1060px; margin: 0 auto; }
+  
   .resume-board { background: var(--surface); border-radius: 30px; padding: 5rem 6rem; box-shadow: 0 20px 60px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.04); }
   .board-section { margin-bottom: 4rem; }
   .board-section:last-child { margin-bottom: 0; }
   .board-title { font-size: 1.4rem; font-weight: 700; color: #111827; margin-bottom: 1.8rem; display: flex; align-items: center; gap: 0.75rem; }
   .board-title::before { content: ''; display: block; width: 20px; height: 4px; background: var(--accent-grad); border-radius: 2px; }
+  
   .about-text { font-size: 1.05rem; font-weight: 300; color: var(--ink-2); line-height: 1.9; }
   .about-text p { margin-bottom: 1rem; }
   .about-text strong { color: #111827; font-weight: 600; }
   .board-divider { height: 1px; background: repeating-linear-gradient(to right, rgba(0,0,0,0.05) 0, rgba(0,0,0,0.05) 8px, transparent 8px, transparent 16px); margin: 4rem 0; border: none; }
 
-  /* 工作經歷清單 */
   .exp-list-new { display: flex; flex-direction: column; gap: 3rem; }
   .exp-item-new { position: relative; padding-left: 2rem; }
   .exp-item-new::before { content: ''; position: absolute; left: 4px; top: 10px; bottom: -3rem; width: 2px; background: rgba(79, 70, 229, 0.1); }
@@ -92,10 +104,10 @@
   .exp-points-new li { font-size: 1rem; font-weight: 300; color: var(--ink-2); line-height: 1.8; position: relative; padding-left: 1.2rem; }
   .exp-points-new li::before { content: '·'; position: absolute; left: 0; top: -2px; font-size: 1.8rem; font-weight: 700; color: var(--ink-muted); line-height: 1; }
 
-  /* 作品集區塊 */
   .section-num { font-size: 0.9rem; font-weight: 700; color: var(--grad-2); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; text-transform: uppercase; }
   .section-title { font-size: clamp(2.5rem, 4vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: 4rem; color: #111827; position: relative; display: inline-block;}
   .section-title::after { content: ''; position: absolute; left: 0; bottom: -10px; width: 60px; height: 4px; background: var(--accent-grad); border-radius: 2px; }
+  
   .works-single-column { display: flex; flex-direction: column; gap: 4rem; max-width: 100%; margin: 0 auto; }
   .work-item { display: flex; flex-direction: column; width: 100%; background: var(--surface); border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 8px 30px rgba(0,0,0,0.03); transition: transform 0.3s ease; }
   .work-item:hover { transform: translateY(-5px); }
@@ -110,7 +122,6 @@
   .work-foot { padding-top: 1.2rem; border-top: 1px solid rgba(0,0,0,0.03); display: flex; gap: 0.6rem; flex-wrap: wrap; }
   .wtag { font-size: 0.75rem; font-weight: 500; padding: 6px 14px; background: #F3F4F6; border-radius: 50px; color: var(--ink-2); }
 
-  /* 聯絡區塊 */
   .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: start; background: linear-gradient(135deg, #ffffff 0%, rgba(79, 70, 229, 0.03) 100%); padding: 5rem; border-radius: 30px; box-shadow: 0 20px 70px rgba(0,0,0,0.04); border: 1px solid rgba(79, 70, 229, 0.08); }
   .contact-intro { font-size: 1.3rem; font-weight: 300; color: var(--ink-2); line-height: 1.8; margin-bottom: 3rem; }
   .contact-intro strong { color: #111827; font-weight: 600; background: var(--accent-grad); -webkit-background-clip: text; background-clip: text; color: transparent;}
@@ -128,17 +139,9 @@
   .fade-in { opacity: 1; transform: none; }
 
   @media (max-width: 1100px) {
-    .hero { grid-template-columns: 1fr; gap: 3rem; padding: 8rem 2rem 4rem; text-align: center; }
-    .hero-visual { max-width: 600px; margin: 0 auto; }
-    .hero-eyebrow { justify-content: center; }
-    .hero-sub { margin: 0 auto 3rem; }
-    nav { padding: 1rem 2rem; }
-    .contact-grid { grid-template-columns: 1fr; gap: 4rem; padding: 3rem; }
-  }
-  @media (max-width: 768px) {
+    .hero { padding: 8rem 2rem 2rem; max-width: 100%; }
     section { padding: 4rem 2rem; }
-    .resume-board { padding: 3rem 2rem; border-radius: 20px; }
-    .exp-header-row { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 4rem; padding: 3rem; }
   }
 </style>
 </head>
@@ -154,12 +157,6 @@
 </nav>
 
 <div class="hero">
-  <div class="hero-text fade-in">
-    <div class="hero-eyebrow">Visual Designer / E-commerce Expert</div>
-    <h1>让每一张图<br>都<span>开口说话</span></h1>
-    <p class="hero-sub">专注高转化率电商视觉全案设计，精通多品类（3C、家居、快消）产品表现。擅长亚马逊 A+ 页面策划与 AIGC 工作流，打造极具溢价感的商业视觉。</p>
-    <a class="hero-cta" href="#works">Explore my Portfolio</a>
-  </div>
   <div class="hero-visual fade-in">
     <img src="封面 拷贝.jpg" alt="2026 电商视觉作品集 封面">
   </div>
@@ -167,7 +164,6 @@
 
 <section id="resume">
   <div class="resume-board fade-in">
-    
     <div class="board-section">
       <div class="board-title">关于我</div>
       <div class="about-text">
@@ -182,7 +178,6 @@
     <div class="board-section">
       <div class="board-title">工作经历</div>
       <div class="exp-list-new">
-        
         <div class="exp-item-new">
           <div class="exp-header-row">
             <div class="exp-company-new">汕头千汇贸易有限公司</div>
@@ -221,17 +216,14 @@
             <li>剪辑和制作各类目标产品视频素材，增强营销效果。</li>
           </ul>
         </div>
-
       </div>
     </div>
-
   </div>
 </section>
 
 <section id="works">
   <div class="section-num">03</div>
   <div class="section-title">精选作品集</div>
-  
   <div class="works-single-column fade-in">
     <a class="work-item" href="纸巾作品集22 拷贝.jpg" target="_blank">
       <div class="work-thumb"><img src="纸巾作品集22 拷贝.jpg" alt="AIGC纸巾详情页设计"></div>
@@ -270,7 +262,7 @@
   <div class="section-title">联系合作</div>
   <div class="contact-grid fade-in">
     <div>
-      <p class="contact-intro">寻求亚马逊 A+、国内电商主图等跨平台视觉设计合作？<br>随时欢迎随时与我联系。我们在这里<strong>开口说话</strong>。</p>
+      <p class="contact-intro">寻求亚马逊 A+、国内电商主图等跨平台视觉设计合作？<br>随时欢迎随时与我联系。</p>
       <div class="contact-items">
         <div class="contact-item"><div class="ci-icon">T</div><span>18026715687</span></div>
         <div class="contact-item"><div class="ci-icon">W</div><span>微信：JiaRu-oo</span></div>
