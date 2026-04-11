@@ -36,33 +36,33 @@
 
   section { padding: 3rem 0; max-width: 1060px; margin: 0 auto; }
   
-  /* 关于我板块：名片式新排版 */
+  /* 简历板：全新对齐布局 */
   .resume-board { background: var(--surface); border-radius: 30px; padding: 4rem 5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.04); }
   
-  .profile-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 2rem; }
-  .profile-main h2 { font-size: 2.2rem; font-weight: 700; color: #111827; margin-bottom: 0.5rem; }
-  .profile-main p { font-size: 1.1rem; color: var(--grad-1); font-weight: 500; letter-spacing: 0.02em; }
-  .profile-edu { text-align: right; }
-  .profile-edu-label { font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; margin-bottom: 0.5rem; }
-  .profile-edu-text { font-size: 1rem; font-weight: 500; color: #111827; }
+  .profile-header { margin-bottom: 2.5rem; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 2.5rem; }
+  .profile-header h2 { font-size: 2.5rem; font-weight: 700; color: #111827; margin-bottom: 0.8rem; letter-spacing: -0.02em; }
+  .profile-info { display: flex; gap: 1.5rem; align-items: center; margin-bottom: 1rem; }
+  .profile-tag { font-size: 1rem; color: var(--grad-1); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+  .profile-edu-box { display: flex; align-items: center; gap: 0.8rem; color: var(--ink-2); font-size: 0.95rem; }
+  .profile-edu-label { font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; background: #F3F4F6; padding: 2px 8px; border-radius: 4px; }
 
   .board-section { margin-bottom: 3rem; }
   .board-section:last-child { margin-bottom: 0; }
   .board-title { font-size: 1.25rem; font-weight: 700; color: #111827; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
   .board-title::before { content: ''; display: block; width: 16px; height: 4px; background: var(--accent-grad); border-radius: 2px; }
   
-  .about-text { font-size: 1rem; font-weight: 300; color: var(--ink-2); line-height: 1.9; }
+  .about-text { font-size: 1.05rem; font-weight: 300; color: var(--ink-2); line-height: 1.9; }
   .about-text p { margin-bottom: 1.2rem; }
   .about-text strong { color: #111827; font-weight: 600; }
 
   /* 工作经历 */
   .exp-list-new { display: flex; flex-direction: column; gap: 2.5rem; }
-  .exp-item-new { position: relative; padding-left: 1.8rem; }
+  .exp-item-new { position: relative; padding-left: 2rem; }
   .exp-item-new::before { content: ''; position: absolute; left: 4px; top: 10px; bottom: -2.5rem; width: 1px; background: rgba(79, 70, 229, 0.15); }
   .exp-item-new:last-child::before { display: none; }
   .exp-item-new::after { content: ''; position: absolute; left: 0; top: 7px; width: 9px; height: 9px; background: var(--surface); border: 2.5px solid var(--grad-1); border-radius: 50%; }
   .exp-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem; flex-wrap: wrap; gap: 0.8rem; }
-  .exp-company-new { font-size: 1.15rem; font-weight: 700; color: #111827; }
+  .exp-company-new { font-size: 1.2rem; font-weight: 700; color: #111827; }
   .exp-date-new { font-size: 0.8rem; font-weight: 600; color: var(--grad-1); background: var(--tag-bg-grad); padding: 3px 12px; border-radius: 50px; }
   .exp-role-new { font-size: 0.95rem; font-weight: 600; color: var(--grad-2); margin-bottom: 0.8rem; }
   .exp-points-new { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
@@ -74,7 +74,7 @@
   .section-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 3.5rem; color: #111827; position: relative; display: inline-block;}
   .section-title::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 50px; height: 4px; background: var(--accent-grad); border-radius: 2px; }
   .works-single-column { display: flex; flex-direction: column; gap: 3.5rem; width: 100%; }
-  .work-item { display: flex; flex-direction: column; background: var(--surface); border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.04); shadow: 0 8px 30px rgba(0,0,0,0.02); transition: transform 0.3s; }
+  .work-item { display: flex; flex-direction: column; background: var(--surface); border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 8px 30px rgba(0,0,0,0.02); transition: transform 0.3s; }
   .work-item:hover { transform: translateY(-5px); }
   .work-thumb { width: 100%; background: #F3F4F6; }
   .work-thumb img { width: 100%; height: auto; display: block; }
@@ -91,15 +91,12 @@
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; background: #FFF; padding: 4rem; border-radius: 24px; border: 1px solid rgba(0,0,0,0.03); }
   .contact-item { display: flex; align-items: center; gap: 1rem; font-size: 0.95rem; color: #111827; margin-bottom: 1.2rem; }
   .ci-icon { width: 2.5rem; height: 2.5rem; background: var(--tag-bg-grad); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--grad-1); font-weight: 700; }
-  .form input, .form textarea { width: 100%; padding: 0.9rem; border: 1px solid #E5E7EB; border-radius: 10px; background: #FAFAFB; font-family: var(--sans); outline: none; margin-bottom: 1rem; }
-  .form-btn { align-self: flex-start; padding: 0.9rem 2.5rem; background: var(--accent-grad); color: white; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; }
 
   footer { text-align: center; padding: 3rem 2rem; font-size: 0.85rem; color: var(--ink-muted); }
 
   @media (max-width: 768px) {
     section, .hero { padding: 3rem 1.5rem; }
-    .profile-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-    .profile-edu { text-align: left; }
+    .profile-info { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
     .contact-grid { grid-template-columns: 1fr; }
     .resume-board { padding: 2.5rem 1.5rem; }
   }
@@ -124,14 +121,13 @@
   <div class="resume-board">
     
     <div class="profile-header">
-      <div class="profile-main">
-        <h2>林佳茹 | Lin JiaRu</h2>
-        <p>电商视觉设计师 · 24 岁</p>
-      </div>
-      <div class="profile-edu">
-        <div class="profile-edu-label">教育背景</div>
-        <div class="profile-edu-text">汕头职业技术学院 · 数字媒体应用技术</div>
-        <div style="font-size: 0.85rem; color: var(--ink-muted);">(2020.09 - 2022.07)</div>
+      <h2>林佳茹</h2>
+      <div class="profile-info">
+        <div class="profile-tag">电商视觉设计师 · 24 岁</div>
+        <div class="profile-edu-box">
+          <span class="profile-edu-label">教育背景</span>
+          <span>汕头职业技术学院 · 数字媒体应用技术 (2020.09 - 2022.07)</span>
+        </div>
       </div>
     </div>
 
@@ -165,9 +161,9 @@
           </ul>
         </div>
         <div class="exp-item-new">
-          <div class="exp-header-row"><div class="exp-company-new">深圳矩焦有限公司</div><div class="exp-date-new">2022.03 — 2022.09</div></div>
-          <div class="exp-role-new">跨境电商美工</div>
-          <ul class="exp-points-new">
+          <div class="exp-header-row"><div class=\"exp-company-new\">深圳矩焦有限公司</div><div class=\"exp-date-new\">2022.03 — 2022.09</div></div>
+          <div class=\"exp-role-new\">跨境电商美工</div>
+          <ul class=\"exp-points-new\">
             <li>主要负责亚马逊产品广告投放图，提升点击率与转化率。</li>
           </ul>
         </div>
@@ -206,6 +202,13 @@
         <div class="work-foot"><span class="wtag">CTR 优化</span><span class="wtag">多品类</span></div>
       </div>
     </a>
+    <a class="work-item" href="亚马逊1 拷贝 2.jpg" target="_blank"><div class="work-thumb"><img src="亚马逊1 拷贝 2.jpg"></div><div class="work-body"><div class="work-num-box"><span class="work-num">04</span><span class="work-tag-main">亚马逊 A+ 设计</span></div><div class="work-title">食品温度计 - 卖点呈现</div><div class="work-desc">场景合成拆解核心功能。</div><div class="work-foot"><span class="wtag">卖点可视化</span></div></div></a>
+    <a class="work-item" href="亚马逊2 拷贝 2.jpg" target="_blank"><div class="work-thumb"><img src="亚马逊2 拷贝 2.jpg"></div><div class="work-body"><div class="work-num-box"><span class="work-num">05</span><span class="work-tag-main">A+ 科技产品</span></div><div class="work-title">泳池机器人 - 视觉排版</div><div class="work-desc">科技感背书与智能卖点。</div><div class="work-foot"><span class="wtag">痛点对比</span></div></div></a>
+    <a class="work-item" href="亚马逊4 拷贝 2.jpg" target="_blank"><div class="work-thumb"><img src="亚马逊4 拷贝 2.jpg"></div><div class="work-body"><div class="work-num-box"><span class="work-num">06</span><span class="work-tag-main">家居类 A+</span></div><div class="work-title">双层沥水架 - 空间展示</div><div class="work-desc">透视角度展现大容量。</div><div class="work-foot"><span class="wtag">层级梳理</span></div></div></a>
+    <a class="work-item" href="亚马逊5 拷贝 2.jpg" target="_blank"><div class="work-thumb"><img src="亚马逊5 拷贝 2.jpg"></div><div class="work-body"><div class="work-num-box"><span class="work-num">07</span><span class="work-tag-main">3C 数码 A+</span></div><div class="work-title">快充充电宝 - 性能分解</div><div class="work-desc">极简灰科技风呈现数据。</div><div class="work-foot"><span class="wtag">数据可视化</span></div></div></a>
+    <a class="work-item" href="未标题-3.jpg" target="_blank"><div class="work-thumb"><img src="未标题-3.jpg"></div><div class="work-body"><div class="work-num-box"><span class="work-num">08</span><span class="work-tag-main">淘宝天猫主图</span></div><div class="work-title">84消毒液 - 场景营造</div><div class="work-desc">温馨家庭背景与除菌卖点。</div><div class="work-foot"><span class="wtag">场景合成</span></div></div></a>
+    <a class="work-item" href="酸性清洁剂 拷贝 2.jpg" target="_blank"><div class="work-thumb"><img src="酸性清洁剂 拷贝 2.jpg"></div><div class="work-body"><div class="work-num-box"><span class="work-num">09</span><span class="work-tag-main">专业级主图</span></div><div class="work-title">酸性清洁剂 - 动感去污</div><div class="work-desc">高对比排版突出专业除垢。</div><div class="work-foot"><span class="wtag">质感精修</span></div></div></a>
+    <a class="work-item" href="详情1 拷贝.jpg" target="_blank"><div class="work-thumb"><img src="详情1 拷贝.jpg"></div><div class="work-body"><div class="work-num-box"><span class="work-num">10</span><span class="work-tag-main">溢价感主图</span></div><div class="work-title">柠檬家私蜡 - 光影滋养</div><div class="work-desc">暖色调光影精准烘托。</div><div class="work-foot"><span class="wtag">光影合成</span></div></div></a>
   </div>
 </section>
 
@@ -217,12 +220,6 @@
       <div class="contact-item"><div class="ci-icon">T</div><span>18026715687</span></div>
       <div class="contact-item"><div class="ci-icon">W</div><span>微信：JiaRu-oo</span></div>
       <div class="contact-item"><div class="ci-icon">@</div><span>LinJiaRu_0110@163.com</span></div>
-    </div>
-    <div class="form">
-      <input type="text" placeholder="您的姓名">
-      <input type="text" placeholder="联系方式">
-      <textarea placeholder="需求描述..."></textarea>
-      <button class="form-btn">发送留言</button>
     </div>
   </div>
 </section>
