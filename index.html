@@ -27,34 +27,39 @@
   .nav-logo { font-size: 1.3rem; font-weight: 700; text-decoration: none; letter-spacing: 0.05em; background: var(--accent-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .nav-links { display: flex; gap: 3rem; list-style: none; }
   .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--ink-2); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--grad-1); }
 
-  /* 修正 1：首图区域底部间距压缩至 10px */
+  /* 首图区域 */
   .hero { padding: 8rem 0 10px; max-width: 1060px; margin: 0 auto; display: flex; justify-content: center; }
   .hero-visual { width: 100%; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05); }
   .hero-visual img { width: 100%; height: auto; display: block; }
 
-  /* 修正 2：Section 顶部间距设为 10px，确保黄色区域间隔不超过 20px */
-  section { padding: 10px 0 2rem; max-width: 1060px; margin: 0 auto; }
+  /* 基础 Section 间距 */
+  section { padding: 10px 0 20px; max-width: 1060px; margin: 0 auto; }
   
-  .resume-board { background: var(--surface); border-radius: 30px; padding: 4rem 5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.04); }
+  /* 简历板：增加底部外边距，拉开与下方作品集的距离 */
+  .resume-board { 
+    background: var(--surface); 
+    border-radius: 30px; 
+    padding: 4rem 5rem; 
+    box-shadow: 0 10px 40px rgba(0,0,0,0.02); 
+    border: 1px solid rgba(0,0,0,0.04);
+    margin-bottom: 60px; 
+  }
   
   .profile-header { margin-bottom: 2.5rem; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 2.5rem; }
   .profile-header h2 { font-size: 2.5rem; font-weight: 700; color: #111827; margin-bottom: 0.8rem; letter-spacing: -0.02em; }
   .profile-info { display: flex; gap: 1.5rem; align-items: center; margin-bottom: 1rem; }
-  .profile-tag { font-size: 1rem; color: var(--grad-1); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+  .profile-tag { font-size: 1rem; color: var(--grad-1); font-weight: 600; }
   .profile-edu-box { display: flex; align-items: center; gap: 0.8rem; color: var(--ink-2); font-size: 0.95rem; }
   .profile-edu-label { font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; background: #F3F4F6; padding: 2px 8px; border-radius: 4px; }
 
   .board-section { margin-bottom: 3rem; }
-  .board-section:last-child { margin-bottom: 0; }
   .board-title { font-size: 1.25rem; font-weight: 700; color: #111827; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
   .board-title::before { content: ''; display: block; width: 16px; height: 4px; background: var(--accent-grad); border-radius: 2px; }
-  
   .about-text { font-size: 1.05rem; font-weight: 300; color: var(--ink-2); line-height: 1.9; }
-  .about-text p { margin-bottom: 1.2rem; }
   .about-text strong { color: #111827; font-weight: 600; }
 
+  /* 工作经历列表 */
   .exp-list-new { display: flex; flex-direction: column; gap: 2.5rem; }
   .exp-item-new { position: relative; padding-left: 1.8rem; }
   .exp-item-new::before { content: ''; position: absolute; left: 4px; top: 10px; bottom: -2.5rem; width: 1px; background: rgba(79, 70, 229, 0.15); }
@@ -68,15 +73,13 @@
   .exp-points-new li { font-size: 0.95rem; font-weight: 300; color: var(--ink-2); line-height: 1.7; position: relative; padding-left: 1.2rem; }
   .exp-points-new li::before { content: '·'; position: absolute; left: 0; top: -1px; font-size: 1.5rem; color: var(--ink-muted); }
 
-  /* 修正 3：作品集标题与内容对齐优化 */
+  /* 作品集标题样式 */
   .section-num { font-size: 0.85rem; font-weight: 700; color: var(--grad-2); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; text-transform: uppercase; padding-left: 50px; }
   .section-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 20px; color: #111827; position: relative; display: inline-block; padding-left: 50px; }
   .section-title::after { content: ''; position: absolute; left: 50px; bottom: -8px; width: 50px; height: 4px; background: var(--accent-grad); border-radius: 2px; }
 
-  /* 修正 4：同系列作品之间的间隔压缩至 20px */
+  /* 作品集间距设定 */
   .works-single-column { display: flex; flex-direction: column; gap: 20px; width: 100%; }
-  
-  /* 修正 5：跨系列作品的 60px 逻辑分区样式 */
   .series-gap { margin-top: 60px !important; }
 
   .work-item { display: flex; flex-direction: column; background: var(--surface); border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 8px 30px rgba(0,0,0,0.02); transition: transform 0.3s; }
@@ -96,10 +99,10 @@
 
   @media (max-width: 768px) {
     section, .hero { padding: 2rem 1.2rem; }
+    .resume-board { padding: 2.5rem 1.5rem; margin-bottom: 40px; }
     .section-num, .section-title { padding-left: 0; }
     .section-title::after { left: 0; }
     .profile-info { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-    .resume-board { padding: 2.5rem 1.5rem; }
     .series-gap { margin-top: 40px !important; }
   }
 </style>
@@ -148,6 +151,7 @@
           <ul class="exp-points-new">
             <li>负责淘宝、天猫、阿里巴巴等多店铺整体视觉设计，涵盖主图、详情页等创意落地。</li>
             <li>独立完成产品拍摄、图片修饰及详情页设计，具备完整视觉输出能力。</li> 
+            <li>灵活运用 AIGC 进行设计辅助，提升视觉画面表现力与工作效率。</li> 
           </ul>
         </div>
         <div class="exp-item-new">
@@ -197,7 +201,7 @@
         <div class="work-num-box"><span class="work-num">03</span><span class="work-tag-main">高点击广告图</span></div>
         <div class="work-title">多品牌联合 - 跨境电商 Banner 设计</div>
         <div class="work-desc">涵盖墨镜、珠宝等，采用冲击力构图精准吸引目标客群。</div>
-        <div class="work-foot"><span class="wtag">CTR 优化</span><span class="wtag">多品类</span></div>
+        <div class="work-foot"><span class="wtag">CTR 优化</span></div>
       </div>
     </a>
 
@@ -269,8 +273,9 @@
 </section>
 
 <section id="contact" style="padding-top: 40px;">
-  <div class="resume-board" style="padding: 3rem 4rem;">
-    <div class="section-num" style="padding-left:0; margin-bottom: 0.5rem;">04</div><div class="section-title" style="padding-left:0; margin-bottom: 1.5rem;">联系合作</div>
+  <div class="resume-board" style="padding: 3rem 4rem; margin-bottom: 0;">
+    <div class="section-num" style="padding-left:0; margin-bottom: 0.5rem;">04</div>
+    <div class="section-title" style="padding-left:0; margin-bottom: 1.5rem;">联系合作</div>
     <div style="display: flex; gap: 3rem; align-items: center; flex-wrap: wrap;">
       <div style="flex: 1; min-width: 200px;">
         <p style="color: var(--ink-2); margin-bottom: 1.5rem;">寻求视觉全案设计合作？欢迎随时联系。</p>
