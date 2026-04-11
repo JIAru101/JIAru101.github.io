@@ -33,17 +33,17 @@
   .hero-visual { width: 100%; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05); }
   .hero-visual img { width: 100%; height: auto; display: block; }
 
-  /* Section 间距：红色/黄色标注区域不超过 20px */
+  /* Section 间距 */
   section { padding: 10px 0 20px; max-width: 1060px; margin: 0 auto; }
   
   /* 简历板 */
   .resume-board { 
     background: var(--surface); 
-    border-radius: 30px; 
+    border-radius: 30px;
     padding: 4rem 5rem; 
     box-shadow: 0 10px 40px rgba(0,0,0,0.02); 
     border: 1px solid rgba(0,0,0,0.04);
-    margin-bottom: 60px; /* 拉开与作品集的呼吸感 */
+    margin-bottom: 60px;
   }
   
   .profile-header { margin-bottom: 2.5rem; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 2.5rem; }
@@ -73,14 +73,19 @@
   .exp-points-new li { font-size: 0.95rem; font-weight: 300; color: var(--ink-2); line-height: 1.7; position: relative; padding-left: 1.2rem; }
   .exp-points-new li::before { content: '·'; position: absolute; left: 0; top: -1px; font-size: 1.5rem; color: var(--ink-muted); }
 
-  /* 标题对齐优化 */
+  /* 标题对齐优化 - 保留原有的主标题缩进 */
   .section-num { font-size: 0.85rem; font-weight: 700; color: var(--grad-2); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; text-transform: uppercase; padding-left: 50px; }
   .section-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 20px; color: #111827; position: relative; display: inline-block; padding-left: 50px; }
   .section-title::after { content: ''; position: absolute; left: 50px; bottom: -8px; width: 50px; height: 4px; background: var(--accent-grad); border-radius: 2px; }
 
-  /* 作品集间距设定 */
-  .works-single-column { display: flex; flex-direction: column; gap: 20px; width: 100%; }
-  .series-gap { margin-top: 60px !important; }
+  /* 作品集间距设定 - 调整为 10px */
+  .works-single-column { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+
+  /* 新增：分类子标题专属样式 */
+  .sub-cat-wrapper { width: 100%; margin-top: 85px; margin-bottom: 15px; padding-left: 50px; }
+  .sub-cat-wrapper.retouching { padding-left: 12px; } /* 仅精修栏目单独对齐内部 Before 标签的 12px */
+  .sub-cat-num { font-size: 0.85rem; font-weight: 700; color: var(--grad-1); margin-bottom: 0.5rem; text-transform: uppercase; }
+  .sub-cat-title { font-size: 1.8rem; font-weight: 700; color: #111827; position: relative; display: inline-block; }
 
   .work-item { display: flex; flex-direction: column; background: var(--surface); border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 8px 30px rgba(0,0,0,0.02); transition: transform 0.3s; }
   .work-item:hover { transform: translateY(-5px); }
@@ -95,6 +100,13 @@
   .work-foot { padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.03); display: flex; gap: 0.5rem; flex-wrap: wrap; }
   .wtag { font-size: 0.7rem; font-weight: 500; padding: 4px 12px; background: #F3F4F6; border-radius: 50px; color: var(--ink-2); }
 
+  /* 精修对比排版专属 CSS */
+  .split-view { display: flex; gap: 2px; background: #fff; padding: 2px; }
+  .split-pane { flex: 1; position: relative; aspect-ratio: 1 / 1; overflow: hidden; background: #fafafa;}
+  .split-pane img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .lbl-before { position: absolute; top: 12px; left: 12px; background: rgba(17, 24, 39, 0.7); color: #fff; padding: 4px 10px; font-size: 0.75rem; font-weight: 600; border-radius: 4px; backdrop-filter: blur(4px); z-index: 2; }
+  .lbl-after { position: absolute; top: 12px; right: 12px; background: var(--accent-grad); color: #fff; padding: 4px 10px; font-size: 0.75rem; font-weight: 600; border-radius: 4px; box-shadow: 0 4px 10px rgba(236, 72, 153, 0.3); z-index: 2; }
+
   /* 联系合作对齐修正 */
   .contact-info-text { padding-left: 50px; color: var(--ink-2); margin-bottom: 1.5rem; }
   .contact-links-box { padding-left: 50px; display: flex; gap: 3rem; flex-wrap: wrap; }
@@ -105,10 +117,11 @@
   @media (max-width: 768px) {
     section, .hero { padding: 2rem 1.2rem; }
     .resume-board { padding: 2.5rem 1.5rem; margin-bottom: 40px; }
-    .section-num, .section-title { padding-left: 0; }
+    .section-num, .section-title, .sub-cat-wrapper, .sub-cat-wrapper.retouching { padding-left: 0; }
     .section-title::after { left: 0; }
     .contact-info-text, .contact-links-box { padding-left: 0; }
     .profile-info { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .split-view { flex-direction: column; } 
   }
 </style>
 </head>
@@ -199,7 +212,12 @@
       </div>
     </a>
 
-    <a class="work-item series-gap" href="广告投放图1 拷贝.jpg" target="_blank">
+    <div class="sub-cat-wrapper">
+      <div class="sub-cat-num">Cross-Border</div>
+      <div class="sub-cat-title">跨境出海作品</div>
+    </div>
+
+    <a class="work-item" href="广告投放图1 拷贝.jpg" target="_blank">
       <div class="work-thumb"><img src="广告投放图1 拷贝.jpg"></div>
       <div class="work-body">
         <div class="work-num-box"><span class="work-num">03</span><span class="work-tag-main">高点击广告图</span></div>
@@ -208,8 +226,7 @@
         <div class="work-foot"><span class="wtag">CTR 优化</span></div>
       </div>
     </a>
-
-    <a class="work-item series-gap" href="亚马逊1 拷贝 2.jpg" target="_blank">
+    <a class="work-item" href="亚马逊1 拷贝 2.jpg" target="_blank">
       <div class="work-thumb"><img src="亚马逊1 拷贝 2.jpg"></div>
       <div class="work-body">
         <div class="work-num-box"><span class="work-num">04</span><span class="work-tag-main">亚马逊 A+ 设计</span></div>
@@ -246,10 +263,115 @@
       </div>
     </a>
 
-    <a class="work-item series-gap" href="未标题-3.jpg" target="_blank">
+    <div class="sub-cat-wrapper retouching">
+      <div class="sub-cat-num">Retouching</div>
+      <div class="sub-cat-title">商业产品精修</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb split-view">
+        <div class="split-pane">
+          <div class="lbl-before">Before (原图)</div>
+          <img src="鼠标.jpg" alt="鼠标原图">
+        </div>
+        <div class="split-pane">
+          <div class="lbl-after">After (精修)</div>
+          <img src="鼠标.png" alt="鼠标精修">
+        </div>
+      </div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">08</span><span class="work-tag-main">3C 数码材质精修</span></div>
+        <div class="work-title">电竞鼠标 - 材质强化与光影重构</div>
+        <div class="work-desc">修复实拍中暗沉且粗糙的塑料材质缺陷，利用材质分离与光影重构技术，打造出细腻的金属光泽与电竞科技感。</div>
+        <div class="work-foot"><span class="wtag">材质打磨</span><span class="wtag">光影重构</span></div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb split-view">
+        <div class="split-pane">
+          <div class="lbl-before">Before (原图)</div>
+          <img src="护肤品 拷贝.jpg" alt="护肤品原图">
+        </div>
+        <div class="split-pane">
+          <div class="lbl-after">After (精修)</div>
+          <img src="护肤品 拷贝 2.png" alt="护肤品精修">
+        </div>
+      </div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">09</span><span class="work-tag-main">美妆护肤质感塑造</span></div>
+        <div class="work-title">美白护手霜 - 剔透感与高级氛围调色</div>
+        <div class="work-desc">修正原图偏暗发灰的色调，强化管身的高级磨砂质感，营造专柜级的高级商业氛围。</div>
+        <div class="work-foot"><span class="wtag">色彩校准</span><span class="wtag">材质提亮</span></div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb split-view">
+        <div class="split-pane">
+          <div class="lbl-before">Before (原图)</div>
+          <img src="蚊香液.jpg" alt="蚊香液原图">
+        </div>
+        <div class="split-pane">
+          <div class="lbl-after">After (精修)</div>
+          <img src="蚊香液-摄影棚阴影版.jpg" alt="蚊香液精修">
+        </div>
+      </div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">10</span><span class="work-tag-main">玻璃液体材质精修</span></div>
+        <div class="work-title">电热蚊香液 - 玻璃通透感重塑</div>
+        <div class="work-desc">解决实拍玻璃瓶身高光杂乱、内部液体浑浊沉闷的痛点。呈现极致干净、通透的视觉体验。</div>
+        <div class="work-foot"><span class="wtag">液体重绘</span><span class="wtag">透视校正</span></div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb split-view">
+        <div class="split-pane">
+          <div class="lbl-before">Before (原图)</div>
+          <img src="尘推 (3).jpg" alt="尘推原图">
+        </div>
+        <div class="split-pane">
+          <div class="lbl-after">After (精修)</div>
+          <img src="尘推精修棚拍无阴影版.jpg" alt="尘推精修">
+        </div>
+      </div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">11</span><span class="work-tag-main">家居百货精修抠图</span></div>
+        <div class="work-title">商用尘推 - 结构校准与杂质剥离</div>
+        <div class="work-desc">从极其杂乱的实拍背景中完美剥离主体，彻底校准产品透视形变，输出干净整洁的电商展示白底图。</div>
+        <div class="work-foot"><span class="wtag">复杂抠图</span><span class="wtag">形变校准</span></div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb split-view">
+        <div class="split-pane">
+          <div class="lbl-before">Before (原图)</div>
+          <img src="银饰.jpg" alt="银饰原图">
+        </div>
+        <div class="split-pane">
+          <div class="lbl-after">After (精修)</div>
+          <img src="银饰.png" alt="银饰精修">
+        </div>
+      </div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">12</span><span class="work-tag-main">珠宝首饰精修</span></div>
+        <div class="work-title">玫瑰金镶钻戒指 - 质感提亮与光影重构</div>
+        <div class="work-desc">清除原图暗沉发灰的色调与杂乱反光，强化排钻的通透闪耀感，重塑玫瑰金独有的细腻光泽与立体结构。</div>
+        <div class="work-foot"><span class="wtag">材质打磨</span><span class="wtag">光影重构</span></div>
+      </div>
+    </div>
+
+    <div class="sub-cat-wrapper">
+      <div class="sub-cat-num">E-Commerce</div>
+      <div class="sub-cat-title">国内电商视觉</div>
+    </div>
+
+    <a class="work-item" href="未标题-3.jpg" target="_blank">
       <div class="work-thumb"><img src="未标题-3.jpg"></div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">08</span><span class="work-tag-main">淘宝天猫主图</span></div>
+        <div class="work-num-box"><span class="work-num">13</span><span class="work-tag-main">淘宝天猫主图</span></div>
         <div class="work-title">84消毒液 - 场景营造</div>
         <div class="work-desc">温馨家庭背景与除菌卖点。</div>
         <div class="work-foot"><span class="wtag">场景合成</span></div>
@@ -258,7 +380,7 @@
     <a class="work-item" href="酸性清洁剂 拷贝 2.jpg" target="_blank">
       <div class="work-thumb"><img src="酸性清洁剂 拷贝 2.jpg"></div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">09</span><span class="work-tag-main">专业级主图</span></div>
+        <div class="work-num-box"><span class="work-num">14</span><span class="work-tag-main">专业级主图</span></div>
         <div class="work-title">酸性清洁剂 - 动感去污</div>
         <div class="work-desc">高对比排版突出专业除垢。</div>
         <div class="work-foot"><span class="wtag">质感精修</span></div>
@@ -267,7 +389,7 @@
     <a class="work-item" href="详情1 拷贝.jpg" target="_blank">
       <div class="work-thumb"><img src="详情1 拷贝.jpg"></div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">10</span><span class="work-tag-main">溢价感主图</span></div>
+        <div class="work-num-box"><span class="work-num">15</span><span class="work-tag-main">溢价感主图</span></div>
         <div class="work-title">柠檬家私蜡 - 光影滋养</div>
         <div class="work-desc">采用高级皮质家居场景背书，暖色调光影精准烘托溢价感。</div>
         <div class="work-foot"><span class="wtag">光影合成</span></div>
